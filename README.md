@@ -68,7 +68,7 @@ https://devops2020.zuoguocai.xyz:11443/
 ## dnspod
 
 
-A 记录对应到两个worker的公网IP上
+这里没有负载均衡，所以 A 记录直接对应到两个worker的公网IP上
 
 
 ## git
