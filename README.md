@@ -1,18 +1,15 @@
 # DevOps2020
 
-
+# 项目背景
 # 安装记录
 
-# DevOps2020
 
-
-#### 项目背景
 
 依托于 AWS ECS  基于 Dockerfile + Jenkinsfile + EKS   搭建交付流水线
 
 
 
-#### EKS 
+## EKS 
 
 
 ```
@@ -47,7 +44,7 @@ kubectl  exec  -it  ingress-nginx-controller-798c579896-ctrg8    /bin/bash    -n
 
 ```
 
-#### harbor
+## harbor
 
 
 ```
@@ -67,18 +64,18 @@ docker push harbor.zuoguocai.xyz:4443/devops/nginx:v1
 
 ```
 
-#### dnspod
+## dnspod
 
 
 
-#### git
+## git
 
 ```
 https://github.com/ZuoGuocai/DevOps2020.git
 
 ```
 
-#### jenkins 搭建
+## jenkins 搭建
 
 
 ```
@@ -90,15 +87,13 @@ yum  -y  install java  java-devel
 java -jar  jenkins.war   --httpPort=9000  --daemon
 
 
-
-
-http://161.189.123.98:9000/
+http://52.82.121.46:9000/
 
 
 
 
 ```
-#### docker
+## docker
 
 ```
 yum  -y install docker
@@ -110,10 +105,11 @@ cat /etc/docker/daemon.json
         "https://registry.docker-cn.com"
     ],
   "insecure-registries": [
-    "https://registry.xxx.com"
+    "https://harbor.zuoguocai.xyz:4443"
       ],
   "graph": "/data/docker"
 }
+
  
 
 systemctl start docker
@@ -124,7 +120,7 @@ systemctl enable docker
 ```
 
 
-#### docker-compose 安装
+## docker-compose 安装
 
 ```
 
@@ -142,9 +138,11 @@ mv docker-compose  /usr/bin
 <!--ignore-preflight-errors=NumCPU  失败  https://juejin.im/entry/6844903781314887694 -->
 
 
-#### JFog
+## JFog
 
 
-#### Elasticsearch
+## Elasticsearch
 
 https://cloud.elastic.co/home
+
+## 监控宝
