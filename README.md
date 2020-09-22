@@ -36,6 +36,8 @@ ls /root/.kube/config
 
 参考 https://github.com/kubernetes/ingress-nginx/blob/master/deploy/static/provider/baremetal/deploy.yaml
 
+更改副本数、网络、默认端口、时区
+
 
 timedatectl set-timezone  Asia/Shanghai
 
