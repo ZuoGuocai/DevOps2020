@@ -17,19 +17,31 @@
 
 
 aws --version
+
 aws configure
+
 AWS Access Key ID [None]: AKIAX2GTKKBQXT322
 AWS Secret Access Key [None]: TATT9l4xJvg92Rk0ZZqyk1np
 Default region name [None]: 
 Default output format [None]: 
 
 aws eks  --region   cn-northwest-1 update-kubeconfig   --name zuoguocai-eks-master
-
  
 ls /root/.kube/config 
 
+cd /usr/local/bin
+curl -o kubectl https://amazon-eks.s3.cn-north-1.amazonaws.com.cn/1.17.9/2020-08-04/bin/linux/amd64/kubectl
+chmod +x  kubectl 
 
-- nginx  ingress  controller 
+vi /etc/profile
+export KUBE=/usr/local/bin
+export PATH=$PATH:$KUBE
+source /etc/profile
+
+```
+## nginx  ingress  controller 
+
+```
 
 参考 https://github.com/kubernetes/ingress-nginx/blob/master/deploy/static/provider/baremetal/deploy.yaml
 
