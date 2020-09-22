@@ -18,7 +18,7 @@
 
 aws --version
 
-aws configure
+aws configure  先写自己账号里的手动生成的Access Key，区域不填
 
 AWS Access Key ID [None]: AKIAX2GTKKBQXT322
 AWS Secret Access Key [None]: TATT9l4xJvg92Rk0ZZqyk1np
