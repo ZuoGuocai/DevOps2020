@@ -56,28 +56,19 @@ kubectl  exec  -it  ingress-nginx-controller-798c579896-ctrg8    /bin/bash    -n
 
 ```
 
-## harbor
+## 服务发布
+```
 
+https://devops2020.zuoguocai.xyz:11443/
 
 ```
-wget https://github.com/goharbor/harbor/releases/download/v2.1.0/harbor-offline-installer-v2.1.0.tgz
-
-https://harbor.zuoguocai.xyz:4443/
 
 
-
-
-docker login  https://harbor.zuoguocai.xyz:4443
-
-
-docker tag  nginx:latest  harbor.zuoguocai.xyz:4443/devops/nginx:v1
-
-docker push harbor.zuoguocai.xyz:4443/devops/nginx:v1
-
-```
 
 ## dnspod
 
+
+A 记录对应到两个worker的公网IP上
 
 
 ## git
@@ -100,8 +91,6 @@ java -jar  jenkins.war   --httpPort=9000  --daemon
 
 
 http://52.82.121.46:9000/
-
-
 
 
 ```
@@ -149,7 +138,25 @@ mv docker-compose  /usr/bin
 
 <!--ignore-preflight-errors=NumCPU  失败  https://juejin.im/entry/6844903781314887694 -->
 
+## harbor
 
+
+```
+wget https://github.com/goharbor/harbor/releases/download/v2.1.0/harbor-offline-installer-v2.1.0.tgz
+
+https://harbor.zuoguocai.xyz:4443/
+
+
+
+
+docker login  https://harbor.zuoguocai.xyz:4443
+
+
+docker tag  nginx:latest  harbor.zuoguocai.xyz:4443/devops/nginx:v1
+
+docker push harbor.zuoguocai.xyz:4443/devops/nginx:v1
+
+```
 ## JFog
 
 
