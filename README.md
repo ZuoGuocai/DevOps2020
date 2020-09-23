@@ -94,6 +94,34 @@ http://52.82.121.46:9000/
 
 
 ```
+
+## tekon
+
+```
+
+Install Tekton Pipelines
+kubectl apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
+
+Install Tekton CLI (tkn)
+curl -LO https://github.com/tektoncd/cli/releases/download/v0.7.1/tkn_0.7.1_Linux_x86_64.tar.gz
+ 
+# Change destination directory as needed
+tar xvzf tkn_0.7.1_Linux_x86_64.tar.gz -C ~/bin
+
+Install Tekton dashboard 仪表盘
+kubectl apply --filename https://github.com/tektoncd/dashboard/releases/download/v0.5.1/tekton-dashboard-release.yaml
+
+
+
+
+
+
+
+
+
+```
+
+
 ## docker
 
 ```
