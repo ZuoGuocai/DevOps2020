@@ -146,7 +146,15 @@ https://myci.zuoguocai.xyz:11443/
 参考文档：https://argoproj.github.io/argo-cd/operator-manual/ingress/
 ```
 
+##  canary
 
+https://blog.51cto.com/liuqunying/1925463 
+
+https://www.cnblogs.com/xiaoqi/p/ingress-nginx-canary.html
+
+https://troy.wang/docs/kubernetes/posts/argo-rollouts-support-traefik/
+
+https://qiita.com/tomozo6/items/1bfc65a86a528f63d205
 
 
 
