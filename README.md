@@ -128,7 +128,7 @@ argocd app create colorapi --repo https://github.com/particuleio/demo-concourse-
 argocd app sync colorapi
 
 
-
+https://myci.zuoguocai.xyz:11443/
 ```
 
 
