@@ -98,12 +98,17 @@ http://52.82.121.46:9000/
 
 ```
 
+## Kaniko
+
+<!-- https://blog.ihypo.net/15487483292659.html >
 
 ## argocd
 
 ```
 
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+argocd rollout
 kubectl apply -n argo-rollouts -f https://raw.githubusercontent.com/argoproj/argo-rollouts/stable/manifests/install.yaml
 
 
