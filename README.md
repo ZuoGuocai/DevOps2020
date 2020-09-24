@@ -102,6 +102,10 @@ http://52.82.121.46:9000/
 
 <!-- https://blog.ihypo.net/15487483292659.html >
 
+## kustomization
+<!-- argo-cd支持多种配置管理/模板工具(Kustomize、Helm、Ksonnet、Jsonnet、plain-YAML) -->
+
+
 ## argocd
 
 ```
