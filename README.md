@@ -262,3 +262,60 @@ docker push harbor.zuoguocai.xyz:4443/devops/nginx:v1
 https://cloud.elastic.co/home
 
 ## 监控宝
+
+
+
+## arm 
+<!--
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+  namespace: martin-demo
+  labels:
+    app: my-app
+spec:
+  selector:
+    app: my-app
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 80
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+  namespace: martin-demo
+  labels:
+    app: my-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: beta.kubernetes.io/arch
+                operator: In
+                values:
+                - amd64
+                - arm64
+      containers:
+      - name: nginx
+        image: nginx:1.19.2
+        ports:
+        - containerPort: 80
+
+```
+-->
