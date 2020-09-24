@@ -42,6 +42,7 @@ source /etc/profile
 ## nginx  ingress  controller 
 
 ```
+k8s.gcr.io/ingress-nginx/controller:v0.35.0 改为 ghcr.io/zuoguocai/ingress-nginx/controller:v0.35.0
 
 参考 https://github.com/kubernetes/ingress-nginx/blob/master/deploy/static/provider/baremetal/deploy.yaml
 
