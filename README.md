@@ -54,6 +54,9 @@ kubectl create secret tls zuogucoai-secret   --cert=zuoguocai.xyz.cert  --key=zu
 
 kubectl  exec  -it  ingress-nginx-controller-798c579896-ctrg8    /bin/bash    -n ingress-nginx
 
+
+参考文档：https://github.com/kubernetes/ingress-nginx/issues/4857
+
 ```
 
 ## 服务发布
@@ -129,6 +132,8 @@ argocd app sync colorapi
 
 
 https://myci.zuoguocai.xyz:11443/
+
+参考文档：https://argoproj.github.io/argo-cd/operator-manual/ingress/
 ```
 
 
@@ -226,6 +231,12 @@ docker push harbor.zuoguocai.xyz:4443/devops/nginx:v1
 
 ```
 ## JFog
+
+使用 Artifactory docker https://www.kdocs.cn/l/s9epu3a2C?f=501  
+
+
+使用 Artifactory Maven 仓库：https://www.kdocs.cn/l/sQpfp1M74?f=501
+
 
 
 ## Elasticsearch
