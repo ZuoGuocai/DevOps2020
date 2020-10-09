@@ -67,6 +67,46 @@ https://devops2020.zuoguocai.xyz:11443/
 
 ```
 
+## 回滚
+
+```
+kubectl get deployment -n devops
+
+kubectl -n devops rollout history deployment/kustomize-getrealip  --revision=1
+
+kubectl -n devops rollout undo deployment/kustomize-getrealip --to-revision=1
+
+```
+## 扩容
+
+```
+
+- 手动
+
+kubectl scale deployment nginx-deployment --replicas=10
+
+- 自动
+
+kubectl autoscale deployment nginx-deployment --min=10 --max=15 --cpu-percent=80
+
+
+- Pause/Resume
+
+当 Deployment 的 .spec.paused = true 时，任何更新都不会被触发 rollout。通过如下命令设置 Deployment 为 paused：
+
+kubectl -n <namespace> rollout pause deployment/<deployment-name>
+
+还原：
+
+kubectl -n <namespace> rollout resume deploy/<deployment-name
+
+
+
+
+参考
+https://whypro.github.io/hexo-blog/20180301/Kubernetes-%E6%9C%8D%E5%8A%A1%E7%81%B0%E5%BA%A6%E5%8D%87%E7%BA%A7%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/
+
+```
 
 
 ## dnspod
