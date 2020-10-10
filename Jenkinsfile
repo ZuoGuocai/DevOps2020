@@ -6,7 +6,7 @@ pipeline {
     agent any
 	
     tools {
-        go 'go1.13'
+        go 
     }
 
        
