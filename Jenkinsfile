@@ -4,10 +4,7 @@ Author: zuoguocai@126.com
 
 pipeline {
     agent any
-    tools {
-        go  'go1.13'
-    }
-    
+       
     environment {
     
         HARBOR_CREDS = credentials('jenkins-harbor-creds')
@@ -47,14 +44,7 @@ pipeline {
                  // 清理工作区
                  step([$class: 'WsCleanup'])
                  // 拉取代码
-                //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '3519b4b1-47fd-43e7-bec3-502aa5d5a99a', url: 'https://github.com/ZuoGuocai/DevOps2020.git']]])
-            
-                //GIT_TAG = sh(returnStdout: true,script: 'git describe --tags --always').trim()
-                
-                
-                  
-                 //git branch: '${BUILD_BRANCH}',
-                
+                              
                  script {
                  
                  git credentialsId: '', url: "https://github.com/ZuoGuocai/DevOps2020.git"
@@ -160,4 +150,4 @@ pipeline {
         
 
     }
-//}
+}
