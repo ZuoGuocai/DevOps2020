@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ipcat-canary
+  name: ipcat-canary
+  namespace: devops
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ipcat-canary
+  template:
+    metadata:
+      labels:
+        app: ipcat-canary
+    spec:
+      containers:
+      - image: harbor.zuoguocai.xyz:4443/devops/ipcat:v2 
+        imagePullPolicy: Always
+        name: ipcat-canary
+        resources:
+          requests:
+            cpu: 0.5
+            memory: 500Mi
+          limits:
+            cpu: 0.5
+            memory: 500Mi
+        ports:
+          - name: http
+            containerPort: 5000
+            protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ipcat-canary
+  namespace: devops
+spec:
+  ports:
+  - name: http
+    port: 8081
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: ipcat-canary
+  type: NodePort
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx  # nginx=nginx-ingress| qcloud=CLB ingress
+ ## kubernetes.io/ingress.subnetId: subnet-xxxxxxxx   # if qcloud, should give subnet
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-by-header: "location"
+    nginx.ingress.kubernetes.io/canary-by-header-value: "shenzhen"
+    #nginx.ingress.kubernetes.io/canary-weight: 100
+  name: my-ingress-for-ipcat  # Ingress 的名字，仅用于标识
+  namespace: devops
+spec:
+  tls:
+  - hosts:
+    - devops2020.zuoguocai.xyz
+    secretName: zuogucoai-secret
+  rules:                      # Ingress 中定义 L7 路由规则
+  - host: devops2020.zuoguocai.xyz   # 根据 virtual hostname 进行路由（请使用您自己的域名）
+    http:
+      paths:                  # 按路径进行路由
+      - path: /
+        backend:
+          serviceName: ipcat-canary  # 指定后端的 Service 为之前创建的 nginx-service
+          servicePort: 8081

@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ipcat-stable
+  name: ipcat-stable
+  namespace: devops
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ipcat-stable
+  template:
+    metadata:
+      labels:
+        app: ipcat-stable
+    spec:
+      containers:
+      - image: harbor.zuoguocai.xyz:4443/devops/ipcat:v1 
+        imagePullPolicy: Always
+        name: ipcat-stable
+        resources:
+          requests:
+            cpu: 0.5
+            memory: 500Mi
+          limits:
+            cpu: 0.5
+            memory: 500Mi
+        ports:
+          - name: http
+            containerPort: 5000
+            protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ipcat-stable
+  namespace: devops
+spec:
+  ports:
+  - name: http
+    port: 8081
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: ipcat-stable
+  type: NodePort
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx  # nginx=nginx-ingress| qcloud=CLB ingress
+  name: my-ingress-for-ipcat-stable  # Ingress 的名字，仅用于标识
+  namespace: devops
+spec:
+  tls:
+  - hosts:
+    - devops2020.zuoguocai.xyz
+    secretName: zuogucoai-secret
+  rules:                      # Ingress 中定义 L7 路由规则
+  - host: devops2020.zuoguocai.xyz   # 根据 virtual hostname 进行路由（请使用您自己的域名）
+    http:
+      paths:                  # 按路径进行路由
+      - path: /
+        backend:
+          serviceName: ipcat-stable  # 指定后端的 Service 为之前创建的 nginx-service
+          servicePort: 8081
