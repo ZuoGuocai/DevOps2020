@@ -10,7 +10,7 @@ pipeline {
     }
 
        
-    withEnv {
+    environment {
     
         HARBOR_CREDS = credentials('jenkins-harbor-creds')
         BUILD_USER_ID = ""
