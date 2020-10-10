@@ -4,6 +4,11 @@ Author: zuoguocai@126.com
 
 pipeline {
     agent any
+	
+    tools {
+        go 'go1.13'
+    }
+
        
     environment {
     
