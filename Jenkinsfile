@@ -5,9 +5,9 @@ Author: zuoguocai@126.com
 pipeline {
     agent any
 	
-    tools {
-        go 
-    }
+   // tools {
+      //  go 
+    //}
 
        
     environment {
