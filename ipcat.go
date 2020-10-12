@@ -5,9 +5,8 @@ Author: zuoguocai@126.com
 package main
 
 import (
-    "fmt"
     "io"
-    "log"
+    log "github.com/sirupsen/logrus"
     "net/http"
     "net/http/httputil"
     "strings"
@@ -21,14 +20,16 @@ func main() {
     mux := http.NewServeMux()
     mux.Handle("/live2d/", http.StripPrefix("/live2d/", fs))
     mux.HandleFunc("/", GetRealIP)
-    log.Println("Server starting ...")
-    http.ListenAndServe(":5000", mux)
+    log.Info("Server starting ...")
+    if err :=  http.ListenAndServe(":5000", mux);err != nil {
+          log.Errorf("Httpserver: ListenAndServe() error: %s", err)
+    }
 }
 
 func GetRealIP(w http.ResponseWriter, r *http.Request) {
     dump, _ := httputil.DumpRequest(r, false)
     log.Printf("%q\n", dump)
-    head := `<!doctype html><html lang="zh"><head><meta charset="UTF-8"><title>DevOps Pipeline Demo</title></head><body><h1 align="center" style="color:red;">ipcat v3.0</h1>`
+    head := `<!doctype html><html lang="zh"><head><meta charset="UTF-8"><title>DevOps Pipeline Demo</title></head><body><h1 align="center" style="color:red;">ipcat v2.0</h1>`
     r1 := strings.Join([]string{"<h3 style='background-color:powderblue;'>","RemoteAddr:  ",r.RemoteAddr,"</h3>"},"")
     r2 := strings.Join([]string{"<h3 style='background-color:#DDA0DD;'>","X-Original-Forwarded-For:  ",r.Header.Get("X-Original-Forwarded-For"),"</h3>"},"")
     r3 := strings.Join([]string{"<h3 style='background-color:powderblue;'>","X-Forwarded-For:  ",r.Header.Get("X-Forwarded-For"),"</h3>"},"")
@@ -59,7 +60,7 @@ footer := `<script src="./live2d/L2Dwidget.min.js"></script><script type="text/j
 </script></html>`
 
     html := strings.Join([]string{head,r1,r2,r3,r4,footer},"")
-
-    io.WriteString(w, fmt.Sprintf(html))
-    return
+    if _,err := io.WriteString(w, html); err != nil {
+         log.Errorf("Httpserver: io WriteString error: %s", err)
+    }
 }
