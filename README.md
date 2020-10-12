@@ -66,6 +66,13 @@ kubectl  exec  -it  ingress-nginx-controller-798c579896-ctrg8    /bin/bash    -n
 https://devops2020.zuoguocai.xyz:11443/
 
 灰度
+
+
+基于header 灰度
+
+chrome 插件 Modheader
+
+
 https://help.coding.net/docs/best-practices/cd/nginx-ingress.html
 
 ```
