@@ -1,5 +1,6 @@
 /*
 Author: zuoguocai@126.com
+Description: Test successfully  in Jenkins 2.256 
 */
 
 
@@ -133,32 +134,17 @@ pipeline {
            
 	    
 	
-  stage('快速回滚?') {
-	  
-	  input{
-            id: 'userInput',
-            message: '是否需要快速回滚？',
-            parameters: [
-              [
-                $class: 'ChoiceParameterDefinition',
-                choices: "N\nY",
-                name: '回滚?'
-              ]
-            ]
-	  }
-     
-	  
-	  steps{
-              script{	
-                      if (userInput == "Y") {
-                          sh "kubectl rollout undo deployment ipcat -n devops"
-                      }
-	       }
-		  
-	  }
-	  
-	  
-  }
+   // K8S紧急时回滚
+    stage('Rollback to k8s') {
+          when { environment name: 'action', value: 'rollback' }
+          steps {
+            echo "k8s images is rolled back! " 
+            sh '''
+             kubectl rollout undo deployment/tomcat-dpm  -n default
+            '''
+          } 
+       }  
+
 	    
 	    
 	    
