@@ -129,7 +129,26 @@ pipeline {
            
 	    
 	
-    
+  stage('快速回滚?') {
+     
+          def userInput = input(
+            id: 'userInput',
+            message: '是否需要快速回滚？',
+            parameters: [
+              [
+                $class: 'ChoiceParameterDefinition',
+                choices: "N\nY",
+                name: '回滚?'
+              ]
+            ]
+          )
+          if (userInput == "Y") {
+            sh "kubectl rollout undo deployment ipcat -n devops"
+          }
+        }
+	    
+	    
+	    
        
         
 
