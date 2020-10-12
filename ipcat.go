@@ -10,6 +10,7 @@ import (
     "net/http"
     "net/http/httputil"
     "strings"
+    "go.elastic.co/apm/module/apmhttp"
 )
 
 
@@ -21,7 +22,7 @@ func main() {
     mux.Handle("/live2d/", http.StripPrefix("/live2d/", fs))
     mux.HandleFunc("/", GetRealIP)
     log.Info("Server starting ...")
-    if err :=  http.ListenAndServe(":5000", mux);err != nil {
+    if err :=  http.ListenAndServe(":5000", apmhttp.Wrap(mux));err != nil {
           log.Errorf("Httpserver: ListenAndServe() error: %s", err)
     }
 }
