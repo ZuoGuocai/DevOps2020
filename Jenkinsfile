@@ -147,13 +147,13 @@ pipeline {
             ]
            )
      
-        script{
 	  
-		
-               if (userInput == "Y") {
-                   sh "kubectl rollout undo deployment ipcat -n devops"
-               }
-	}
+	  steps{
+              script{	
+                      if (userInput == "Y") {
+                          sh "kubectl rollout undo deployment ipcat -n devops"
+                      }
+	       }
 	  
 	  
   }
