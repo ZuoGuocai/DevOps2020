@@ -52,7 +52,7 @@ pipeline {
                               
                  script {
                  
-                 git credentialsId: '', url: "https://github.com/ZuoGuocai/DevOps2020.git"
+                 git url: "https://github.com/ZuoGuocai/DevOps2020.git"
                  
                 
                   build_tag = sh(returnStdout: true, script: 'git describe --tags --always').trim()
