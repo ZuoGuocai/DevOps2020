@@ -154,7 +154,8 @@ stage('紧急回滚') {
                  if ("${UNDO}" == 'YES') {
                    sh '''
                    # 快速回滚 - 回滚到最近版本
-                   kubectl  rollout undo deployment ipcat-canary -n devops
+                   kubectl -n devops rollout undo deployment ipcat-canary 
+		   kubectl -n devops rollout status deployment ipcat-canary
                    # 回滚到指定版本
                    # kubectl -n ${NAMESPACE} rollout undo deployment ipcat-canary --to-revision=$(kubectl -n ${NAMESPACE} rollout history deployment ipcat-canary | grep ${COMMIT_ID} | awk '{print $1}')
                    # kubectl -n ${NAMESPACE} rollout status deployment ipcat-canary
