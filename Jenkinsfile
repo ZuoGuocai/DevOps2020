@@ -77,21 +77,9 @@ pipeline {
         
         stage('构建镜像'){
          
-            input {
-                message "测试环境"
-                ok "提交."
-                submitter ""
-                parameters {
-                    string(name: 'PASSWD', defaultValue: '', description: '请输入密码开始部署')
-                }
-            }
-         
+
             steps {
-            
-              script{
-              if (PASSWD == HARBOR_CREDS_PSW) {
-                echo "start build image"
-                
+
                   dir('') {
                     // 删除之前构建镜像
                     sh "docker image prune  -a --force --filter  label='maintainer=zuoguocai@126.com'"
@@ -106,28 +94,38 @@ pipeline {
                    sh "docker push harbor.zuoguocai.xyz:4443/devops/ipcat:${build_tag}"
                    
                    }
-                
-                
-                 } else {
-                     echo '密码错误,部署失败'
-                  }
-                }
+    
             }
           
         }
         
             
         stage('部署到k8s集群') {
+
+                input {
+                message "测试环境"
+                ok "提交."
+                submitter ""
+                parameters {
+                    string(name: 'PASSWD', defaultValue: '', description: '请输入密码开始部署')
+                }
+                }
               
                steps{
-                    sh "sed  's/<IMG_TAG>/${build_tag}/g' ipcat-canary.tmpl   > ipcat.yaml"
-                    sh "kubectl apply  -f  ipcat.yaml"
-                    //sh "kubectl get pods -n devops"
-                                       
-                    }
-                    
-                }
-                
+
+                        script{
+                              if (PASSWD == HARBOR_CREDS_PSW) {
+                                 echo "start release to test"
+                        
+                                 sh "sed  's/<IMG_TAG>/${build_tag}/g' ipcat-canary.tmpl   > ipcat.yaml"
+                                 sh "kubectl apply  -f  ipcat.yaml"
+                                 //sh "kubectl get pods -n devops"
+                              } else {
+                                 echo '密码错误,部署失败'
+                              }
+                        }
+                 }
+        }
            
 	    
 	
