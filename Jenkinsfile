@@ -147,8 +147,7 @@ pipeline {
             sh "kubectl rollout undo deployment produce-deployment -n ${NAMESPACE}"
           }
         }
-      }
-    }    
+    
        
         
 
