@@ -134,17 +134,36 @@ pipeline {
            
 	    
 	
-   // K8S紧急时回滚
-    stage('Rollback to k8s') {
-          when { environment name: 'action', value: 'rollback' }
-          steps {
-            echo "k8s images is rolled back! " 
-            sh '''
-             kubectl rollout undo deployment/tomcat-dpm  -n default
-            '''
-          } 
-       }  
-
+stage('RollOut') {
+      
+      input {
+        id 'ROLLOUT'
+        message "是否快速回滚？"
+        ok "确认"
+        submitter ""
+        parameters {
+          choice(name: 'UNDO', choices: ['NO', 'YES'], description: '是否快速回滚？')
+        }
+      }
+      
+      
+        steps {
+    
+          echo "Kubernetes快速回滚"
+               script {
+                 if ("${UNDO}" == 'YES') {
+                   sh '''
+                   # 快速回滚 - 回滚到最近版本
+                   kubectl  rollout undo deployment ipcat -n devops
+                   # 回滚到指定版本
+                   # kubectl -n ${NAMESPACE} rollout undo deployment consume-deployment --to-revision=$(kubectl -n ${NAMESPACE} rollout history deployment consume-deployment | grep ${COMMIT_ID} | awk '{print $1}')
+                   # kubectl -n ${NAMESPACE} rollout status deployment consume-deployment
+                   '''
+                 }
+               }
+        }
+      
+}
 	    
 	    
 	    
