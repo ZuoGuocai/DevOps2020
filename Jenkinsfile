@@ -74,7 +74,7 @@ pipeline {
                 sh 'go version'
 	        // 单元测试
 		sh 'go test  ipcat_test.go  -v'
-                sh 'go build ipcat'
+                sh 'go build ipcat.go'
 		// 静态扫描
 		sh 'golangci-lint run ipcat.go'
             }
