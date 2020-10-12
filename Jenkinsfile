@@ -73,6 +73,8 @@ pipeline {
             steps {
                 sh 'go version'
                 sh 'go build .'
+		// 静态扫描
+		sh 'golangci-lint run ipcat.go'
             }
         }
         
