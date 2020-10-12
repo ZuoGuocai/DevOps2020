@@ -154,6 +154,8 @@ pipeline {
                           sh "kubectl rollout undo deployment ipcat -n devops"
                       }
 	       }
+		  
+	  }
 	  
 	  
   }
