@@ -72,6 +72,8 @@ pipeline {
         stage('编译代码') {
             steps {
                 sh 'go version'
+	        // 单元测试
+		sh 'go test'
                 sh 'go build .'
 		// 静态扫描
 		sh 'golangci-lint run ipcat.go'
