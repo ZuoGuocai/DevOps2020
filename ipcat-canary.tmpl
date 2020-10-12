@@ -16,7 +16,7 @@ spec:
         app: ipcat-canary
     spec:
       containers:
-      - image: harbor.zuoguocai.xyz:4443/devops/ipcat:v2 
+      - image: harbor.zuoguocai.xyz:4443/devops/ipcat:<IMG_TAG>
         imagePullPolicy: Always
         name: ipcat-canary
         resources:
