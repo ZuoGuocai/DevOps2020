@@ -135,7 +135,7 @@ pipeline {
 	
   stage('快速回滚?') {
 	  
-	    input(
+	  input{
             id: 'userInput',
             message: '是否需要快速回滚？',
             parameters: [
@@ -145,7 +145,7 @@ pipeline {
                 name: '回滚?'
               ]
             ]
-           )
+	  }
      
 	  
 	  steps{
