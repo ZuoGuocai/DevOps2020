@@ -134,7 +134,7 @@ pipeline {
            
 	    
 	
-stage('RollOut') {
+stage('紧急回滚') {
       
       input {
         id 'ROLLOUT'
@@ -154,10 +154,10 @@ stage('RollOut') {
                  if ("${UNDO}" == 'YES') {
                    sh '''
                    # 快速回滚 - 回滚到最近版本
-                   kubectl  rollout undo deployment ipcat -n devops
+                   kubectl  rollout undo deployment ipcat-canary -n devops
                    # 回滚到指定版本
-                   # kubectl -n ${NAMESPACE} rollout undo deployment consume-deployment --to-revision=$(kubectl -n ${NAMESPACE} rollout history deployment consume-deployment | grep ${COMMIT_ID} | awk '{print $1}')
-                   # kubectl -n ${NAMESPACE} rollout status deployment consume-deployment
+                   # kubectl -n ${NAMESPACE} rollout undo deployment ipcat-canary --to-revision=$(kubectl -n ${NAMESPACE} rollout history deployment ipcat-canary | grep ${COMMIT_ID} | awk '{print $1}')
+                   # kubectl -n ${NAMESPACE} rollout status deployment ipcat-canary
                    '''
                  }
                }
