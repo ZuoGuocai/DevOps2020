@@ -94,7 +94,7 @@ pipeline {
                 
                   dir('') {
                     // 删除之前构建镜像
-                    sh "docker image prune -a --force  --filter 'label=ZuoGuocai'"
+                    sh "docker image prune -a --force  --filter 'maintainer=zuoguocai@126.com'"
                     // build镜像
                     
                     //echo build_tag
