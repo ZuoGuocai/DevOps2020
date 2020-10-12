@@ -120,9 +120,9 @@ pipeline {
         stage('部署到k8s集群') {
               
                steps{
-                    sh "sed  's/<IMG_TAG>/${build_tag}/g' /opt/deploy/ipcat.temp   > /opt/deploy/ipcat.yaml"
-                    sh "kubectl apply  -f /opt/deploy/getrealip.yaml"
-                    sh "kubectl get pods -n devops"
+                    sh "sed  's/<IMG_TAG>/${build_tag}/g' ipcat-canary.tmpl   > ipcat.yaml"
+                    sh "kubectl apply  -f  ipcat.yaml"
+                    //sh "kubectl get pods -n devops"
                                        
                     }
                     
