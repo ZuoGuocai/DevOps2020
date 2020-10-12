@@ -134,8 +134,7 @@ pipeline {
 	    
 	
   stage('快速回滚?') {
-     
-        script{
+	  
 	    input(
             id: 'userInput',
             message: '是否需要快速回滚？',
@@ -147,6 +146,9 @@ pipeline {
               ]
             ]
            )
+     
+        script{
+	  
 		
                if (userInput == "Y") {
                    sh "kubectl rollout undo deployment ipcat -n devops"
