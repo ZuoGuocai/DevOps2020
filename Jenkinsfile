@@ -134,6 +134,30 @@ pipeline {
                               }
                         }
                  }
+		
+		
+		post {
+                 success{
+                    dingtalk (
+                    // robot 为插件DingTalk配置后自动生成的id,在系统管理--系统配置--钉钉里找
+                        robot: 'cd1bbf6f-b885-4fe8-8f0d-b8564af27ebe',
+                        type: 'MARKDOWN',
+                        title: 'Jenkins pipeline构建通知',
+                        text: [
+                            "# <font color=#66CDAA>${env.BUILD_DISPLAY_NAME}构建成功 </font>",
+                           '---',
+                           "- 执行人: ${BUILD_USER}",
+                           "- 邮箱: ${BUILD_USER_EMAIL}",
+                           "- 作业: ${env.WORKSPACE}",
+                          
+                        ],
+                        at: [
+                          '13020038138'
+                        ]
+                    )
+                }
+            }
+
         }
            
 	    
