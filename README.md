@@ -12,6 +12,14 @@
 
 
 
+基于nginx  ingress  controller  header 的灰度
+
+
+
+
+
+
+
 # 运维记录
 
 
