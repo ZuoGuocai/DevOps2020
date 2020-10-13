@@ -6,6 +6,24 @@
 
 依托于 AWS ECS  基于 Dockerfile + Jenkinsfile + EKS   搭建golang 应用 交付流水线
 
+nginx  ingress  controller 动静分离
+
+
+- 导航
+
+https://devops2020.zuoguocai.xyz:11443/
+
+
+- ipcat 
+
+https://devops2020.zuoguocai.xyz:11443/ipcat
+
+
+- 彩蛋
+
+https://devops2020.zuoguocai.xyz:11443/caidan/
+
+
 
 
 
