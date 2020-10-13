@@ -30,7 +30,7 @@ func main() {
 func GetRealIP(w http.ResponseWriter, r *http.Request) {
     dump, _ := httputil.DumpRequest(r, false)
     log.Printf("%q\n", dump)
-    head := `<!doctype html><html lang="zh"><head><meta charset="UTF-8"><title>DevOps Pipeline Demo</title></head><body><h1 align="center" style="color:red;">ipcat v4.0</h1>`
+    head := `<!doctype html><html lang="zh"><head><meta charset="UTF-8"><title>DevOps Pipeline Demo</title></head><body><h1 align="center" style="color:red;">ipcat v3.0</h1>`
     r1 := strings.Join([]string{"<h3 style='background-color:powderblue;'>","RemoteAddr:  ",r.RemoteAddr,"</h3>"},"")
     r2 := strings.Join([]string{"<h3 style='background-color:#DDA0DD;'>","X-Original-Forwarded-For:  ",r.Header.Get("X-Original-Forwarded-For"),"</h3>"},"")
     r3 := strings.Join([]string{"<h3 style='background-color:powderblue;'>","X-Forwarded-For:  ",r.Header.Get("X-Forwarded-For"),"</h3>"},"")
