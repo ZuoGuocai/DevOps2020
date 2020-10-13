@@ -6,7 +6,18 @@
 
 依托于 AWS ECS  基于 Dockerfile + Jenkinsfile + EKS   搭建golang 应用 交付流水线
 
+
+![image](https://www.processon.com/view/link/5f3e5925f346fb06ded26090)
+
+
+
+
+
+
 nginx  ingress  controller 动静分离
+
+
+
 
 
 - 导航
