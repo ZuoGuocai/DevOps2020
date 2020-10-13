@@ -1,11 +1,20 @@
 # DevOps2020
 
 # 项目背景
-# 安装记录
 
 
 
-依托于 AWS ECS  基于 Dockerfile + Jenkinsfile + EKS   搭建交付流水线
+依托于 AWS ECS  基于 Dockerfile + Jenkinsfile + EKS   搭建golang 应用 交付流水线
+
+
+
+
+
+
+
+# 运维记录
+
+
 
 
 
@@ -13,7 +22,7 @@
 
 
 ```
-1master + 2 worker 
+ 2 worker 
 
 
 aws --version
