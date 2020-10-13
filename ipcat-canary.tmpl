@@ -30,20 +30,53 @@ spec:
           - name: http
             containerPort: 5000
             protocol: TCP
+ ---           
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: frontend-canary
+  name: frontend-canary
+  namespace: devops
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend-canary
+  template:
+    metadata:
+      labels:
+        app: frontend-canary
+    spec:
+      containers:
+      - image: harbor.zuoguocai.xyz:4443/devops/nginx:<IMG_TAG>
+        imagePullPolicy: Always
+        name: frontend-canary
+        resources:
+          requests:
+            cpu: 0.5
+            memory: 500Mi
+          limits:
+            cpu: 0.5
+            memory: 500Mi
+        ports:
+          - name: http
+            containerPort: 443
+            protocol: TCP            
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: ipcat-canary
+  name: frontend-canary
   namespace: devops
 spec:
   ports:
   - name: http
     port: 8081
     protocol: TCP
-    targetPort: 5000
+    targetPort: 443
   selector:
-    app: ipcat-canary
+    app: frontend-canary
   type: NodePort
 ---
 apiVersion: networking.k8s.io/v1beta1
@@ -69,5 +102,5 @@ spec:
       paths:                  # 按路径进行路由
       - path: /
         backend:
-          serviceName: ipcat-canary  # 指定后端的 Service 为之前创建的 nginx-service
+          serviceName: frontend-canary  # 指定后端的 Service 为之前创建的 nginx-service
           servicePort: 8081
