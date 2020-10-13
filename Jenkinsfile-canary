@@ -97,10 +97,12 @@ pipeline {
                     //echo build_tag
                     
                    sh "docker build -t harbor.zuoguocai.xyz:4443/devops/ipcat:${build_tag} ."
+		   sh "docker  build  -f  nginx/Dockerfile  -t   harbor.zuoguocai.xyz:4443/devops/nginx:${build_tag}    nginx"
                     // 登录镜像仓库
                     sh "docker login -u ${HARBOR_CREDS_USR} -p ${HARBOR_CREDS_PSW} harbor.zuoguocai.xyz:4443"
                     // 推送镜像到镜像仓库
                    sh "docker push harbor.zuoguocai.xyz:4443/devops/ipcat:${build_tag}"
+		   sh "docker push harbor.zuoguocai.xyz:4443/devops/nginx:${build_tag}"
                    
                    }
     
