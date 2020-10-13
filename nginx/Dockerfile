@@ -10,5 +10,5 @@ ADD live2d     ./live2d
 
 COPY nginx.conf /etc/nginx/
 RUN chown -R nginx:nginx /web
-EXPOSE 443
+EXPOSE 11443
 CMD ["nginx", "-g", "daemon off;"]
