@@ -61,8 +61,23 @@ spec:
             memory: 500Mi
         ports:
           - name: http
-            containerPort: 443
+            containerPort: 80
             protocol: TCP            
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ipcat-canary
+  namespace: devops
+spec:
+  ports:
+  - name: http
+    port: 8082
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: ipcat-canary
+  type: NodePort
 ---
 apiVersion: v1
 kind: Service
@@ -74,7 +89,7 @@ spec:
   - name: http
     port: 8081
     protocol: TCP
-    targetPort: 443
+    targetPort: 80
   selector:
     app: frontend-canary
   type: NodePort
@@ -104,3 +119,7 @@ spec:
         backend:
           serviceName: frontend-canary  # 指定后端的 Service 为之前创建的 nginx-service
           servicePort: 8081
+      - path: /ipcat
+        backend:
+          serviceName: ipcat-canary  # 指定后端的 Service 为之前创建的 nginx-service
+          servicePort: 8082
