@@ -10,15 +10,33 @@
 ![image](http://processon.com/chart_image/5f3e59245653bb06f2dd122c.png)
 
 
+#### 整体说明：
+
+- 需求、迭代、任务、缺陷管理，测试计划
+
+我这里使用的阿里云效 ，也可以使用 jira和禅道
 
 
 
+- 源代码管理
+https://github.com/ZuoGuocai/DevOps2020.git
 
-nginx  ingress  controller 动静分离
+- 制品库harbor
+https://harbor.zuoguocai.xyz:4443/
+
+- 单元测试、静态扫描
+
+go test，
+
+- CICD jenkins pipeline
+http://52.82.121.46:9000/
+
+- 部署发布EKS
+基于nginx ingress controller 动静分离
+基于nginx  ingress  controller  header 的灰度
 
 
-
-
+## 功能点：
 
 - 导航
 
@@ -41,7 +59,7 @@ https://devops2020.zuoguocai.xyz:11443/caidan/
 
 
 
-基于nginx  ingress  controller  header 的灰度
+
 
 
 
