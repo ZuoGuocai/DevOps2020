@@ -1,0 +1,38 @@
+version: '3.7'
+services:
+
+  nginx:
+    image: harbor.zuoguocai.xyz:4443/devops/nginx:v1
+    ports:
+      - 4433:4433
+    networks:
+      - mynet
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 10s
+        failure_action: rollback
+        order: start-first
+      rollback_config:
+        parallelism: 1
+        delay: 10s
+        failure_action: rollback
+        order: start-first
+    depends_on:
+      - gobackend
+
+  gobackend:
+    image: harbor.zuoguocai.xyz:4443/devops/ipcat:v1 
+    networks:
+      - mynet
+    deploy:
+      mode: replicated
+      replicas: 1
+
+
+networks:
+  mynet:
+    driver: overlay
+

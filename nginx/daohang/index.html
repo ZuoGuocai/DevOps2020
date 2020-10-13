@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+<head>
+<meta author="zuoguocai@126.com" content="国才AI导航网站" charset="utf-8">
+<link rel="shortcut  icon" href="images/whale_32px_.ico" type="image/x-icon" />
+<title>为AI而生</title>
+<base target="_blank">
+<style>
+<!-- h1.class1 { -->
+<!-- width: 50px;  -->
+<!-- font-size: 50px;  -->
+<!-- word-wrap: break-word;  -->
+<!-- text-align:left; -->
+<!-- } -->
+<!-- h1.class2 {  -->
+<!-- width: 50px;  -->
+<!-- font-size: 50px;  -->
+<!-- word-wrap: break-word;  -->
+<!-- margin:0 auto; -->
+<!-- text-align:center; -->
+<!-- }  -->
+body{padding:0;margin:0;background:#F5F4F2;font-size:14px;color:#992222;font-family:"Microsoft YaHei",sans-serif;}
+ul,dl,dt,dd,p{list-style-type:none;padding:0;margin:0;}
+a{text-decoration:none;}
+.fl{float:left;}
+.fr{float:right;}
+
+.head{width:960px;height:65px;margin:0 auto;}
+.logo{width:130px;height:35px;margin-top:15px;}
+.logo .logoimg{display:inline-block;width:300px;height:60px;background: url(images/logo.png) no-repeat;text-indent:-999px;}
+
+.title{width:80px;height:35px;margin-top:20px;color:#909090;font-size:20px;}
+
+.search{width:352px;height:35px;margin:15px 0 0 100px;}
+.search .text{width:268px;height:33px;padding:0 10px;border:1px solid #EBE9E7;background:#FFFFFF;line-height:33px;font-size:15px;color:#999999;}
+.search .button{border:0;width:62px;height:35px;background:#007BC7;line-height:35px;font-size:15px;color:#FFF;text-align:center;}
+.search .button:hover{background:#33CCCC;}
+
+.favorite{width:295px;height:50px;background:#D1E9E9;text-align:center;}
+.favorite a{color:#909090;font-size:14px;display:inline-block;margin-top:12px;}
+.favorite a:hover{background:#992222;color:#FFF;}
+.piao{font-size: 20px;margin:15px;color:red;}
+.content{width:1120px;margin:20px auto;background:#FFF;padding:1px 20px;border:2px ;border-radius:25px;}
+.content h2{line-height:25px;color:#909090;font-size:18px;font-weight:normal;}
+.content ul{width:1120px;margin:0 auto;border-left:1px solid #DDD;border-top:1px solid #DDD;margin-bottom:20px;overflow:hidden;}
+.content ul li{float:left;width:223px;height:35px;border-right:1px solid #DDD;border-bottom:1px solid #DDD;}
+.content ul li a{margin:7px 0 0 20px;display:inline-block;color:#992222;}
+.content ul li a:hover{background:#992222;color:#FFF;}
+
+.footer{width:1120px;height:60px;margin:0 auto;}
+.footer .fleft{width:500px;height:60px;}
+.footer .fleft p{line-height:25px;color:#909090;font-size:12px;}
+.footer .fleft .p1 a{color:#992222;margin-right:10px;}
+.footer .fleft .p2 a{color:#909090;}
+.footer .fright{width:450px;height:60px;}
+.footer .fright p{line-height:50px;color:#909090;text-align:right}
+</style>
+</head>
+
+<body>
+
+
+
+<div class="head">
+    <div class="logo fl">
+      <a href="/" class="logoimg" target="_self"></a>
+    </div>
+
+    <div class="title fl">
+       
+    </div>
+
+        <div class="search fl">
+          <form class="form fl" action="http://bird.so/search">
+              <input type="text" name="q" class="text fl" value="" placeholder="请输入,如:Deep Learning" >
+              <input type="submit" value="Google" class="button fl">
+              
+          </form>
+        </div>
+
+    <div class="favorite fr">
+      <div id="ddate"></div>
+      <div id="ddate2"></div>
+			<script language="javascript">
+
+			var ddate=document.getElementById("ddate");
+			var ddate2=document.getElementById("ddate2");
+			function updatedate(){
+			var dd1=new Date(); 
+			dd1.setMinutes(dd1.getMinutes()+dd1.getTimezoneOffset()-300); //取当地时间加上和格林威治的时差减要求地区和格林的时差分钟，这里是-300，代表美国东部纽约和格林的时差
+			//先设置setMinutes再取getHours才有效
+			var tmin=dd1.getHours();
+			if(tmin>=0 && tmin<6){
+			   tmin='凌晨'+tmin;
+			}
+			if(tmin>=6 && tmin<=12){
+			   tmin='早上'+tmin;
+			}
+			if(tmin>12 && tmin<=18){
+			   tmin='下午'+tmin;
+			}
+			if(tmin>18 && tmin<=24){
+			   tmin='晚上'+tmin;
+			}
+			
+			var dd2=new Date();
+			var tmin2=dd2.getHours();
+			if(tmin2>=0 && tmin2<6){
+			   tmin2='凌晨'+tmin2;
+			}
+			if(tmin2>=6 && tmin2<=12){
+			   tmin2='早上'+tmin2;
+			}
+			if(tmin2>12 && tmin2<=18){
+			   tmin2='下午'+tmin2;
+			}
+			if(tmin2>18 && tmin2<=24){
+			   tmin2='晚上'+tmin2;
+			}
+
+			ddate.innerHTML='Los Angeles:'+dd1.getFullYear()+"年"+(dd1.getMonth()+1)+"月"+dd1.getDate()+"日"+tmin+"点"+dd1.getMinutes()+"分"+dd1.getSeconds()+"秒";
+			var dd2=new Date();
+			    dd2.setMinutes(dd2.getMinutes()+dd2.getTimezoneOffset()+15*60-300);//洛杉矶和中国相差15个小时，夏天是12个小时所以这里加上15*60 夏天改为12*60 
+			ddate2.innerHTML=' Beijing:'+ dd2.getFullYear()+"年"+(dd2.getMonth()+1)+"月"+dd2.getDate()+"日"+tmin2+"点"+dd2.getMinutes()+"分"+dd2.getSeconds()+"秒";
+			 var t=setTimeout("updatedate()",1000);
+			}
+			updatedate();
+			</script>
+    </div>
+</div>
+<div class="piao">
+<MARQUEE scrollAmount=3 behavior=alternate>撸起袖子加油干,一张蓝图绘到底。 不忘初心,牢记使命。</MARQUEE>
+</div>
+
+<!-- <div><h1 class="class1">撸起袖子加油干</h1></div> -->
+<!-- <div><h1 class="class2">一张蓝图绘到底</h1></div> -->
+<div class="content">
+
+  <h2>AI资讯</h2>
+  <ul>
+ <li><a href="https://www.jiqizhixin.com/">机器之心</a></li>
+ <li><a href="https://yq.aliyun.com/cloud">阿里云头条</a></li>
+ <li><a href="https://jizhi.im/blog">集智专栏</a></li>
+ <li><a href="https://www.cnblogs.com/charlotte77/">胡晓曼专栏</a></li>
+ <li><a href="http://www.tensorfly.cn/">tensorfly</a></li>
+ <li><a href="https://morvanzhou.github.io/">莫烦python</a></li>
+ <li><a href="https://antkillerfarm.github.io/ml/2018/01/29/Machine_Learning_33.html">机器学习术语表</a></li>
+ <li><a href="http://suanfazu.com/">算法组</a></li>
+ <li><a href="http://www.deeplearningbook.org">deeplearningbook</a></li>
+ <li><a href="http://deeplearning.net">deeplearning</a></li>
+ <li><a href="http://www.studyai.com/zhuanlan/index">studyai</a></li>
+ <li><a href="http://ccai.caai.cn/">中国人工智能大会</a></li>
+ <li><a href="http://smart.blogchina.com/">博客中国AI频道</a></li>
+ <li><a href="https://flyai.club/">flyai</a></li>
+ <li><a href="https://www.tinymind.cn/">tinymind</a></li>
+ </ul>   
+ <h2>AI数学基础</h2>
+ <ul>
+ <li><a href="https://mooc.study.163.com/smartSpec/detail/1001358003.htm">人工智能核心数学</a></li>
+ <li><a href="https://ccjou.wordpress.com/">线性代数</a></li>
+ <li><a href=""></a></li>
+ <li><a href=""></a></li>
+ <li><a href=""></a></li>
+ </ul>
+ 
+ <h2>Python</h2>
+ <ul>
+ <li><a href="http://lovenight.github.io/2016/09/25/Python-3-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">python3学习笔记</a></li>
+ <li><a href="https://www.mugglecoding.com">麻瓜</a></li>
+ <li><a href="http://crossincode.com/">编程教室</a></li>
+ <li><a href="http://www.dongwm.com/">dongwm</a></li>
+ <li><a href=""></a></li>
+ </ul>
+ 
+ <h2>AI领域</h2>
+ <ul>
+ <li><a href="http://www.52nlp.cn/">我爱自然语言处理</a></li>
+ <li><a href="http://keras-cn-docs.readthedocs.io/zh_CN/latest/blog/keras_and_tensorflow/">Keras</a></li>
+ <li><a href="http://x-algo.cn/index.php">x-algo</a></li>
+ <li><a href="http://yanshengjia.com/">yanshengjia</a></li>
+ <li><a href="https://blog.csdn.net/c406495762/article/details/76262487">机器学习实战笔记</a></li>
+ <li><a href=""></a></li>
+ <li><a href=""></a></li>
+ <li><a href=""></a></li>
+ <li><a href=""></a></li>
+ <li><a href=""></a></li>
+ </ul>
+ 
+ <h2>AI视频</h2>
+  <ul>
+ <li><a href="http://zh.gluon.ai/">李沐</a></li>
+ <li><a href="http://mooc.study.163.com/smartSpec/detail/1001319001.htm">网易-吴恩达</a></li>
+ <li><a href="https://tensorflow.google.cn/">google tensorflow</a></li>
+ <li><a href="https://software.intel.com/zh-cn/ai-academy?_ga=2.126502477.1189433800.1521700138-1890807688.1521700050">Intel</a></li>
+ <li><a href="https://edu.hellobi.com/course/255">天善-胡晓曼</a></li>
+ <li><a href="https://space.bilibili.com/243821484?spm_id_from=333.338.v_upinfo.2#/">莫烦bilibili</a></li>
+ <li><a href="http://www.mooc.ai">慕课AI</a></li>
+ <li><a href="https://www.deeplearning.ai/">吴恩达</a></li>
+ <li><a href="http://ai.baidu.com/paddlepaddle/openCourses">百度AI公开课</a></li>
+ <li><a href=""></a></li>
+ </ul>
+ <h2>AI工具镜像</h2>
+  <ul>
+ <li><a href="http://www.paddlepaddle.org/">百度paddlepaddle</a></li>
+ <li><a href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/">清华anaconda</a></li>
+ <li><a href="https://mirrors.tuna.tsinghua.edu.cn/help/tensorflow/">清华tensorflow</a></li>
+ <li><a href="https://mirrors.tuna.tsinghua.edu.cn/ctex/unstable/">清华ctex</a></li>
+ <li><a href="https://developer.nvidia.com/deep-learning">Nvidia</a></li>
+ <li><a href="http://developers.googleblog.cn/2017/08/tensorflow-serving-10.html">tensorflow-serving</a></li>
+ <li><a href="http://playground.tensorflow.org">playground</a></li>
+ <li><a href="https://github.com/Angel-ML/angel">腾讯Angel</a></li>
+ <li><a href=""></a></li>
+ <li><a href=""></a></li>
+ </ul>
+<h2>AI赛事</h2>
+ <ul>
+<li><a href="https://www.kaggle.com/">kaggle</a></li>
+ <li><a href="https://tianchi.aliyun.com/">天池</a></li>
+ <li><a href="https://www.kesci.com/">科赛网</a></li>
+ <li><a href="http://www.dcjingsai.com/">DataCastle</a></li>
+ <li><a href="https://ditech.didichuxing.com/">滴滴算法大赛</a></li>
+ <li><a href="https://challenger.ai/">AI Challenger</a></li>
+ <li><a href="http://challenge.xfyun.cn/">iFLYTEK AI开发者大赛</a></li>
+ <li><a href="http://www.datadreams.org/">数愿</a></li>
+ <li><a href="http://www.datafountain.cn">DataFountain</a></li>
+ <li><a href=""></a></li>
+ </ul>
+ <h2>AI科研</h2>
+ <ul>
+<li><a href="http://ai.stanford.edu/">斯坦福人工智能实验室</a></li>
+ <li><a href="http://ai.pku.edu.cn/">北京大学人工智能实验室</a></li>
+ <li><a href="http://www.aiar.xjtu.edu.cn/"> 人工智能与机器人研究所</a></li>
+ <li><a href="http://lamda.nju.edu.cn/CH.MainPage.ashx?AspxAutoDetectCookieSupport=1">南京大学LAMDA</a></li>
+ <li><a href="https://deepmind.com/">deepmind</a></li>
+ <li><a href="https://arxiv.org/">arxiv</a></li>
+ <li><a href=""></a></li>
+ <li><a href=""></a></li>
+ <li><a href=""></a></li>
+ <li><a href=""></a></li>
+ </ul>
+ <h2>AI公司</h2>
+ <ul>
+ <li><a href="https://www.pony.ai/">pony.ai</a></li>
+ <li><a href="http://ai.baidu.com">百度AI开发平台</a></li>
+ <li><a href="https://www.faceplusplus.com.cn/blog/">Face++</a></li>
+ <li><a href="https://www.sensetime.com/">商汤科技</a></li>
+ <li><a href="https://aiyixue.qq.com/official/">腾讯觅影</a></li>
+  <li><a href="http://lab.toutiao.com/">今日头条人工智能实验室</a></li>
+  <li><a href="http://www.iflytek.com/">科大讯飞</a></li>
+  <li><a href="https://www.tuputech.com/">图谱科技</a></li>
+  <li><a href="https://www.ubtrobot.com">优必选</a></li>
+  <li><a href="https://www.drive.ai/">drive.ai</a></li>
+  <li><a href="https://www.bostondynamics.com">波斯顿动力</a></li>
+  <li><a href=""></a></li>
+  <li><a href=""></a></li>
+  <li><a href=""></a></li>
+  <li><a href=""></a></li>
+ </ul>
+ 
+ 
+ <h2>趣味AI</h2>
+ <ul>
+ <li><a href="http://www.shinainai.com/">施奶奶爱动脑</a></li>
+ <li><a href="https://www.jqr.com/">机器人之家</a></li>
+ <li><a href="http://www.wanwushuo.com/">玩物说</a></li>
+ <li><a href="http://www.rgznworld.com/">人工智能世界</a></li>
+ <li><a href="http://shumeipai.nxez.com/tag/python">树莓派实验室</a></li>
+ </ul>
+ 
+<h2>数据科学</h2>
+ <ul>
+ <li><a href="https://rapidminer.com/">rapidminer</a></li>
+ <li><a href="https://www.kdnuggets.com/">kdnuggets</a></li>
+ <li><a href="https://colab.research.google.com">colab</a></li>
+ <li><a href=""></a></li>
+ <li><a href=""></a></li>
+ </ul>
+ 
+ 
+     <h2>在线工具</h2>
+      <ul>
+        <li><a href="http://www.ip138.com/">IP 138</a></li>
+        <li><a href="https://www.draw.io/">我们都爱架构图</a></li>
+        <li><a href="http://www.atool.org/network.php">子网掩码计算</a></li>
+        <li><a href="http://www.osgeo.cn/app/s2879">RAID硬盘容量计算</a></li>
+        <li><a href="http://ip.taobao.com">淘宝IP地址库</a></li>
+        
+		<li><a href="https://wx.qq.com/">微信网页版</a></li>
+		<li><a href="https://www.baidu.com/">百度一哈</a></li>
+		<li><a href="https://identitysafe.norton.com/password-generator/">密码生成器</a></li>
+		<li><a href="http://ce.cloud.360.cn/">360奇云测</a></li>
+		<li><a href="https://www.processon.com/">processon</a></li>
+
+
+		<li><a href="https://cn.bing.com/">Bing</a></li>
+		<li><a href="http://jk.cloud.360.cn/">网站服务监控</a></li>
+		<li><a href="http://finda.photo/">FindA.Photo</a></li>
+		<li><a href="https://unsplash.com/">unsplash</a></li>
+		<li><a href="http://apistore.baidu.com/astore/toolshttpproxy">API调试工具</a></li>
+
+		<li><a href="https://mp.toutiao.com/profile_v2/publish">头条</a></li>
+		<li><a href="https://help.aliyun.com/contact/service.htm?spm=5176.7738833.201511181.3.AoRRb7">阿里云自助工具</a></li>
+		<li><a href="https://www.hichina.com/">万网</a></li>
+		<li><a href="http://www.ip.cn/dns.html">DNS列表</a></li>
+		<li><a href="https://www.ipip.net/ip.html">IP查询(带经纬度)</a></li>
+		
+     </ul>
+
+
+ <h2>我的收藏</h2>
+      <ul>
+        <li><a href="https://www.sxl.cn">上线了</a></li>
+        <li><a href="http://tool.chinaz.com/speedworld">海外网站测速</a></li>
+        <li><a href="http://tool.chinaz.com/Tools/MD5.aspx">MD5加密</a></li>
+        <li><a href="https://myssl.com/">myssl</a></li>
+        <li><a href="https://mp.weixin.qq.com/debug/">微信公众平台接口调试工具</a></li>
+		
+		
+		<li><a href="https://csr.chinassl.net/ssl-checker.html">证书过期时间监测</a></li>
+		<li><a href="http://tool.chinaz.com/tools/unicode.aspx">中文转Unicode</a></li>
+		<li><a href="http://devdocs.io/">devdocs</a></li>
+		<li><a href="http://www.caup.cn/">birdso</a></li>
+		<li><a href="http://dh.woshipm.com/#">阿猫阿狗导航</a></li>
+      </ul>
+
+<div class="footer">
+    <div class="fleft fl">
+        <p class="p1"><a href="https://github.com/ZuoGuocai">联系我们</a></p>
+        <p class="p2">Copyleft &copy; zuoguocai.github.io &nbsp;为AI而生&nbsp;Powered by zuoguocai@126.com &nbsp;</p>
+    </div>
+
+    <div class="fright fr">
+        <p>Deep Learning for everyone!</p>
+    </div>
+</div>
+
+<canvas id="dog-walking" width="0" height="0" style="position:fixed;bottom:0;left:0"></canvas>
+<script src="main.js?ver=1"></script>
+</body>
+
+</html>
