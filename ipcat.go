@@ -17,7 +17,7 @@ import (
 
 
 func main() {
-    fs := http.FileServer(http.Dir("./live2d"))
+    fs := http.FileServer(http.Dir("./nginx/live2d"))
     mux := http.NewServeMux()
     mux.Handle("/live2d/", http.StripPrefix("/live2d/", fs))
     mux.HandleFunc("/", GetRealIP)
