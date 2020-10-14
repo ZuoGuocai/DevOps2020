@@ -40,7 +40,15 @@ http://52.82.121.46:9000/
 
 - 度量    
 
-Kibana、Elasticsearch、Filebeat、APM-Golang
+监控 
+
+监控宝
+
+日志
+Kibana、Elasticsearch、Filebeat
+
+请求、性能分析
+APM-Golang
 
 
 <!-- 动态构建 、自动化测试、 度量-apm、日志、监控、链路-->
