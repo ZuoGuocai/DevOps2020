@@ -38,7 +38,9 @@ http://52.82.121.46:9000/
 基于nginx ingress controller 动静分离
 基于nginx  ingress  controller  header 的灰度
 
-- elasticsearch go APM
+- 度量    
+
+Kibana、Elasticsearch、Filebeat、APM-Golang
 
 
 <!-- 动态构建 、自动化测试、 度量-apm、日志、监控、链路-->
