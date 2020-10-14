@@ -60,7 +60,8 @@ https://devops2020.zuoguocai.xyz:11443/caidan/
 
 
 
-通过ingress 做url路由分发
+
+> 通过ingress 做url路由分发
 
 caidan、daohang、live2d 等静态资源放在nginx里托管，
 
