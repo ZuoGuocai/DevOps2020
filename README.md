@@ -23,6 +23,15 @@
 
 https://github.com/ZuoGuocai/DevOps2020.git
 
+<!--
+git tag 管理
+
+合并分支请求  
+Github Pull  Requests
+Gitlab Merge Request
+webhook
+>
+
 - 制品库harbor
 
 https://harbor.zuoguocai.xyz:4443/
