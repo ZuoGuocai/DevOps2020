@@ -389,6 +389,34 @@ docker push harbor.zuoguocai.xyz:4443/devops/nginx:v1
 
 https://cloud.elastic.co/home
 
+
+filebeat install
+
+```
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.9.2-x86_64.rpm
+
+
+yum  -y install filebeat-7.9.2-x86_64.rpm 
+vim /etc/filebeat/filebeat.yml
+
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /var/lib/docker/containers/*/*.log
+cloud.id: "i-o-optimized-deployment:ZWFzdHVzMi5henVyZS5lbGFzdGljLWNsb3VkLmNvbSRhMWU2ZTNmN2I3ZmE0NGU4YTc4MDFjNjZmOGIzNGUxNSQ2MmM4OGI1YTQ5ZTM0NTFlYWFjYjMxMDY1OGI0ODNkMQ=="
+cloud.auth: "elastic:PCR0smjgvI1PlfSwfODg5mny"
+
+sudo filebeat modules enable elasticsearch
+sudo filebeat setup
+sudo systemctl start  filebeat 
+
+
+```
+
+
+
+
 ## 监控宝
 
 
