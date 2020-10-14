@@ -429,10 +429,12 @@ sudo systemctl start  filebeat
 
 ## 监控宝
 
+https://monitoring.cloudwise.com/
 
+
+<!--
 
 ## arm 
-<!--
 ```
 apiVersion: v1
 kind: Service
