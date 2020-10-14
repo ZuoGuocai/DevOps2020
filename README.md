@@ -11,7 +11,7 @@
 
 # 整体说明：
 
-- 需求、迭代、任务、缺陷管理，测试计划
+- 需求、迭代、任务、缺陷管理，看板、测试计划
 
 我这里使用的阿里云效 ，也可以使用 jira和禅道
 
@@ -37,6 +37,8 @@ http://52.82.121.46:9000/
 
 基于nginx ingress controller 动静分离
 基于nginx  ingress  controller  header 的灰度
+
+- elasticsearch go APM
 
 ---
 
