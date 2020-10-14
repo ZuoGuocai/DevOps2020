@@ -3,7 +3,6 @@
 # 项目背景
 
 
-
 依托于 AWS ECS  基于 Dockerfile + Jenkinsfile + EKS   搭建golang 应用 交付流水线
 
 
@@ -18,7 +17,7 @@
 
 
 
-- 源代码管理
+- 源代码管理github
 
 https://github.com/ZuoGuocai/DevOps2020.git
 
@@ -28,10 +27,10 @@ https://harbor.zuoguocai.xyz:4443/
 
 - 单元测试、静态扫描
 
-go test 
+go test ，
 golangci-lint
 
-- CICD jenkins pipeline
+- CICD jenkins pipeline 
 http://52.82.121.46:9000/
 
 - 部署发布EKS
@@ -43,17 +42,17 @@ http://52.82.121.46:9000/
 
 ## 功能点：
 
-- 导航
+1. AI学习导航
 
 https://devops2020.zuoguocai.xyz:11443/
 
 
-- ipcat 
+2. ipcat 在pod里获取客户端真实源地址工具
 
 https://devops2020.zuoguocai.xyz:11443/ipcat
 
 
-- 彩蛋
+3. 大赛彩蛋 
 
 https://devops2020.zuoguocai.xyz:11443/caidan/
 
@@ -134,7 +133,6 @@ kubectl  exec  -it  ingress-nginx-controller-798c579896-ctrg8    /bin/bash    -n
 
 https://devops2020.zuoguocai.xyz:11443/
 
-灰度
 
 
 基于header 灰度
