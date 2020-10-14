@@ -19,22 +19,27 @@
 
 
 - 源代码管理
+
 https://github.com/ZuoGuocai/DevOps2020.git
 
 - 制品库harbor
+
 https://harbor.zuoguocai.xyz:4443/
 
 - 单元测试、静态扫描
 
-go test，
+go test 
+golangci-lint
 
 - CICD jenkins pipeline
 http://52.82.121.46:9000/
 
 - 部署发布EKS
+
 基于nginx ingress controller 动静分离
 基于nginx  ingress  controller  header 的灰度
 
+---
 
 ## 功能点：
 
