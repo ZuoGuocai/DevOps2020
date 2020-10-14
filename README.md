@@ -1,15 +1,15 @@
 # DevOps2020
 
-# 项目背景
+# 项目背景:
 
 
-依托于 AWS ECS  基于 Dockerfile + Jenkinsfile + EKS   搭建golang 应用 交付流水线
+依托于 AWS ECS  基于 Dockerfile + Jenkinsfile + EKS   搭建golang web 应用 交付流水线
 
 
 ![image](http://processon.com/chart_image/5f3e59245653bb06f2dd122c.png)
 
 
-#### 整体说明：
+# 整体说明：
 
 - 需求、迭代、任务、缺陷管理，测试计划
 
@@ -40,7 +40,7 @@ http://52.82.121.46:9000/
 
 ---
 
-## 功能点：
+# 功能点：
 
 1. AI学习导航
 
@@ -71,7 +71,7 @@ https://devops2020.zuoguocai.xyz:11443/caidan/
 
 
 
-# 运维记录
+# 运维记录:
 
 
 
