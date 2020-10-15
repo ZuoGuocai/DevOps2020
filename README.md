@@ -61,6 +61,9 @@ Kibana、Elasticsearch、Filebeat
 请求、性能分析
 APM-Golang
 
+grafana tanka
+https://tanka.dev/tutorial/jsonnet
+
 
 <!-- 动态构建 、自动化测试、 度量-apm、日志、监控、链路-->
 
