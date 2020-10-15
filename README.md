@@ -452,6 +452,18 @@ https://tanka.dev/tutorial/jsonnet
 sudo curl -Lo /usr/local/bin/tk https://github.com/grafana/tanka/releases/latest/download/tk-linux-amd64
 sudo curl -Lo /usr/local/bin/jb https://github.com/jsonnet-bundler/jsonnet-bundler/releases/latest/download/jb-linux-amd64
 ```
+
+
+<!--
+## jenkins动态构建
+https://mp.weixin.qq.com/s/ODLVHXRHCnNiWrSDfpoIqQ -->
+
+
+
+
+
+
+
 <!--
 
 ## arm 
