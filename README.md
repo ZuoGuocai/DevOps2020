@@ -61,8 +61,7 @@ Kibana、Elasticsearch、Filebeat
 请求、性能分析
 APM-Golang
 
-grafana tanka
-https://tanka.dev/tutorial/jsonnet
+
 
 
 <!-- 动态构建 、自动化测试、 度量-apm、日志、监控、链路-->
@@ -445,7 +444,14 @@ sudo systemctl start  filebeat
 
 https://monitoring.cloudwise.com/
 
+## grafana tanka
+```
 
+https://tanka.dev/tutorial/jsonnet
+
+sudo curl -Lo /usr/local/bin/tk https://github.com/grafana/tanka/releases/latest/download/tk-linux-amd64
+sudo curl -Lo /usr/local/bin/jb https://github.com/jsonnet-bundler/jsonnet-bundler/releases/latest/download/jb-linux-amd64
+```
 <!--
 
 ## arm 
