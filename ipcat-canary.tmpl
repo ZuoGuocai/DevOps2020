@@ -97,12 +97,12 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  annotations:
-    kubernetes.io/ingress.class: nginx  # nginx=nginx-ingress| qcloud=CLB ingress
+  ##annotations:
+  ##  kubernetes.io/ingress.class: nginx  # nginx=nginx-ingress| qcloud=CLB ingress
  ## kubernetes.io/ingress.subnetId: subnet-xxxxxxxx   # if qcloud, should give subnet
-    nginx.ingress.kubernetes.io/canary: "true"
-    nginx.ingress.kubernetes.io/canary-by-header: "location"
-    nginx.ingress.kubernetes.io/canary-by-header-value: "shenzhen"
+  ##  nginx.ingress.kubernetes.io/canary: "true"
+  ##  nginx.ingress.kubernetes.io/canary-by-header: "location"
+  ##  nginx.ingress.kubernetes.io/canary-by-header-value: "shenzhen"
     #nginx.ingress.kubernetes.io/canary-weight: 100
   name: my-ingress-for-ipcat  # Ingress 的名字，仅用于标识
   namespace: devops
