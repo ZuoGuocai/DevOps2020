@@ -17,7 +17,7 @@
 
 
 
-- 源代码管理github
+- 源代码管理github ( https://github.com/ZuoGuocai/DevOps2020.git)
 
   git tag 管理
 
@@ -25,7 +25,7 @@
   
   Code Review (https://github.com/features/code-review/)
 
-  https://github.com/ZuoGuocai/DevOps2020.git
+
 
 <!--
 
