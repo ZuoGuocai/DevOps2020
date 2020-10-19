@@ -227,8 +227,9 @@ image: harbor.zuoguocai.xyz:4443/devops/ingress-nginx/controller@sha256:51b3966f
   value: Asia/Shanghai
 
 
-80，443，8080 无法使用，所以这里把80 改为了11180，443 改为了11443，但通过kubectl get ingress -A  查看的化还是显示为80，443，在eks上可以查看到
-11180，11443 已经监听端口，通过端口可以正常访问，实际生产环境不建议改端口，备案就行了
+80，443，8080 无法使用，所以这里把80 改为了11180，443 改为了11443，但通过kubectl get ingress -A  
+查看的话还是显示为80，443，在eks上可以查看到11180，11443 已经监听端口，通过端口可以正常访问，
+实际生产环境不建议改端口，备案就行了
 
 更改后文件为zuoguocai-nginx-ingress.yaml
 
