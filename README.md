@@ -178,9 +178,13 @@ kubectl apply  -f zuoguocai-nginx-ingress.yaml
  2 worker 
 
 
+在web控制台 右上角自己账号里 我的安全凭证--AWS IAM凭证---创建访问密钥 里手动生成的Acess Key ID，Access Key
+
+aws 命令 AWS 官方镜像 Amazon Linux 2 AMI (HVM) 默认已经安装，如果是其他镜像需要手动安装
+
 aws --version
 
-aws configure  先写自己账号里的手动生成的Access Key，区域不填
+aws configure ，填入刚才在web里生成的 Acess Key ID，Access Key，  区域不填
 
 AWS Access Key ID [None]: AKIAX2GTKKBQXT322
 AWS Secret Access Key [None]: TATT9l4xJvg92Rk0ZZqyk1np
