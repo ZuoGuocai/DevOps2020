@@ -233,7 +233,21 @@ https://devops2020.zuoguocai.xyz:11443/
 
 基于header 灰度
 
-chrome 插件 Modheader
+
+ingress deployment 配置添加
+
+  annotations:
+    kubernetes.io/ingress.class: nginx  # nginx=nginx-ingress| qcloud=CLB ingress
+    #kubernetes.io/ingress.subnetId: subnet-xxxxxxxx   # if qcloud, should give subnet
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-by-header: "location"
+    nginx.ingress.kubernetes.io/canary-by-header-value: "shenzhen"
+
+
+
+chrome 插件 Modheader 添加 location: shenzhen
+
+
 
 
 参考文档: https://help.coding.net/docs/best-practices/cd/nginx-ingress.html
