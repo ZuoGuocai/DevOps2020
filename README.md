@@ -42,11 +42,15 @@ webhook
   golangci-lint
 
 - CICD jenkins pipeline 
+
+  脚本式Jenkinsfile 、Blue Ocean 、人工确认
+  
   http://52.82.121.46:9000/
 
 - 部署发布EKS
 
   基于nginx ingress controller 动静分离
+  
   基于nginx  ingress  controller  header 的灰度
 
 - 度量    
