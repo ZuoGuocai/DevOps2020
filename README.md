@@ -203,10 +203,13 @@ aws eks  --region   cn-northwest-1 update-kubeconfig   --name zuoguocai-eks-mast
  
 ls /root/.kube/config 
 
+
+下载kubectl ，版本和集群k8s版本要一致
 cd /usr/local/bin
 curl -o kubectl https://amazon-eks.s3.cn-north-1.amazonaws.com.cn/1.17.9/2020-08-04/bin/linux/amd64/kubectl
 chmod +x  kubectl 
 
+配置kubectl 全局环境变量
 vi /etc/profile
 export KUBE=/usr/local/bin
 export PATH=$PATH:$KUBE
