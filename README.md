@@ -418,7 +418,7 @@ docker push harbor.zuoguocai.xyz:4443/devops/nginx:v1
 
 
 
-## Elasticsearch
+## Elastic cloud
 
 https://cloud.elastic.co/home
 
