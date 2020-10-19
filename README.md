@@ -144,7 +144,7 @@ webhook
 ```
 kubectl  get ns  ingress-nginx  -o json > ingress.json
 
-把此字段置空
+修改ingress.json文件， 把此字段finalizers的值置空
 
 "finalizers": [
             "finalizers.kubesphere.io/namespaces"  #记得要完全删除字段中的内容
