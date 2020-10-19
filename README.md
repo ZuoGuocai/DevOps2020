@@ -177,7 +177,7 @@ https://devops2020.zuoguocai.xyz:11443/
 chrome 插件 Modheader
 
 
-https://help.coding.net/docs/best-practices/cd/nginx-ingress.html
+参考文档: https://help.coding.net/docs/best-practices/cd/nginx-ingress.html
 
 ```
 
