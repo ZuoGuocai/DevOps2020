@@ -211,52 +211,26 @@ k8s.gcr.io/ingress-nginx/controller:v0.35.0 改为 ghcr.io/zuoguocai/ingress-ngi
 
 更改副本数、网络、默认端口、时区、image仓库地址
 
-  spec:
-      `hostNetwork: true`
-      `dnsPolicy: ClusterFirstWithHostNet`
-      containers:
-        - name: controller
-          `image: harbor.zuoguocai.xyz:4443/devops/ingress-nginx/controller@sha256:51b3966f02453315e7b4cbd04f20b83be73f76aad02dc6207f8d9ffac6bf5c7b`
-          imagePullPolicy: IfNotPresent
-          lifecycle:
-            preStop:
-              exec:
-                command:
-                  - /wait-shutdown
-          args:
-            - /nginx-ingress-controller
-            - --election-id=ingress-controller-leader
-            - --ingress-class=nginx
-            - --configmap=$(POD_NAMESPACE)/ingress-nginx-controller
-            - --validating-webhook=:8443
-            - --validating-webhook-certificate=/usr/local/certificates/cert
-            - --validating-webhook-key=/usr/local/certificates/key
-            `- --http-port=11180`
-            `- --https-port=11443`
-          securityContext:
-            capabilities:
-              drop:
-                - ALL
-              add:
-                - NET_BIND_SERVICE
-            runAsUser: 101
-            allowPrivilegeEscalation: true
-          env:
-            - name: POD_NAME
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.name
-            - name: POD_NAMESPACE
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
-            - name: LD_PRELOAD
-              value: /usr/local/lib/libmimalloc.so
-            `- name: TZ`
-              `value: Asia/Shanghai`
+spec:
+  replicas: 2
+
+spec:
+  hostNetwork: true
+  dnsPolicy: ClusterFirstWithHostNet
+
+image: harbor.zuoguocai.xyz:4443/devops/ingress-nginx/controller@sha256:51b3966f02453315e7b4cbd04f20b83be73f76aad02dc6207f8d9ffac6bf5c7b
+         
+- --http-port=11180
+- --https-port=11443
+          
+- name: TZ
+  value: Asia/Shanghai
 
 
+80，443，8080 无法使用，所以这里把80 改为了11180，443 改为了11443，但通过kubectl get ingress -A  查看的化还是显示为80，443，在eks上可以查看到
+11180，11443 已经监听端口，通过端口可以正常访问，实际生产环境不建议改端口，备案就行了
 
+更改后文件为zuoguocai-nginx-ingress.yaml
 
 
 
