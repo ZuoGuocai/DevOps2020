@@ -394,6 +394,14 @@ yum  -y install docker
 
 cat /etc/docker/daemon.json 
 {
+  "bridge": "none",
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "10m",
+    "max-file": "10"
+  },
+  "live-restore": true,
+  "max-concurrent-downloads": 10，
   "registry-mirrors": [
         "https://docker.mirrors.ustc.edu.cn",
         "https://registry.docker-cn.com"
