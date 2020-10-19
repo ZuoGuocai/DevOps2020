@@ -129,6 +129,9 @@ webhook
 
 ## EKS 
 
+
+ 我创建了 2 个  worker 节点
+
 1. 升级k8s 版本
 
 把k8s 从1.17 升级到1.18 
@@ -173,23 +176,28 @@ kubectl apply  -f zuoguocai-nginx-ingress.yaml
 
 
 
-2. 生成连接集群的 kubeconfig 
+2. EC2 上生成连接集群的 kubeconfig 
 ```
- 2 worker 
 
 
-在web控制台 右上角自己账号里 我的安全凭证--AWS IAM凭证---创建访问密钥 里手动生成的Acess Key ID，Access Key
+
+在web控制台 右上角自己账号里 我的安全凭证--AWS IAM凭证---创建访问密钥 里手动生成Access Key ID，Access Key
 
 aws 命令 AWS 官方镜像 Amazon Linux 2 AMI (HVM) 默认已经安装，如果是其他镜像需要手动安装
 
 aws --version
 
+配置 AWS CLI 凭证,这样我们就可以用在命令行管理AWS 服务了
+
 aws configure ，填入刚才在web里生成的 Acess Key ID，Access Key，  区域不填
 
 AWS Access Key ID [None]: AKIAX2GTKKBQXT322
 AWS Secret Access Key [None]: TATT9l4xJvg92Rk0ZZqyk1np
-Default region name [None]: 
+Default region name [None]: c
 Default output format [None]: 
+
+
+配置Kubeconfig，用于kubectl 通过apiserver操作EKS 集群
 
 aws eks  --region   cn-northwest-1 update-kubeconfig   --name zuoguocai-eks-master
  
@@ -203,6 +211,9 @@ vi /etc/profile
 export KUBE=/usr/local/bin
 export PATH=$PATH:$KUBE
 source /etc/profile
+
+
+参考文档：https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/getting-started-console.html
 
 ```
 
