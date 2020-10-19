@@ -22,6 +22,8 @@
   git tag 管理
 
   合并分支请求  Github Pull  Requests 
+  
+  Code Review (https://github.com/features/code-review/)
 
   https://github.com/ZuoGuocai/DevOps2020.git
 
