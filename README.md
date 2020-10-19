@@ -162,6 +162,10 @@ curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.18.8/2020-09-18/
 
 
 kubectl apply  -f zuoguocai-nginx-ingress.yaml
+
+
+更改 DNS A记录
+
 ```
 
 
