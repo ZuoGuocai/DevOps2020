@@ -3,7 +3,7 @@
 # 项目背景:
 
 
-依托于 AWS ECS  基于 Dockerfile + Jenkinsfile + EKS   搭建golang web 应用 交付流水线
+依托于 AWS EC2 基于 Dockerfile + Jenkinsfile + EKS   搭建golang web 应用 交付流水线
 
 
 ![image](http://processon.com/chart_image/5f3e59245653bb06f2dd122c.png)
