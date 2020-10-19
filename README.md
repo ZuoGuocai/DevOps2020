@@ -49,6 +49,8 @@ webhook
 - 制品库harbor
 
   https://harbor.zuoguocai.xyz:4443/
+  
+  修改每个EKS worker 的 docker配置/etc/docker/daemon.json，加入制品库地址
 
 - CICD jenkins pipeline 
 
