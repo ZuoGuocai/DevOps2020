@@ -40,6 +40,10 @@ webhook
 
   go test ，
   golangci-lint
+  
+- 编译构建
+
+  go build, Dockerfile
 
 - CICD jenkins pipeline 
 
