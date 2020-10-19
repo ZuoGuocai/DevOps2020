@@ -129,6 +129,7 @@ webhook
 
 ## EKS 
 
+1. 升级k8s 版本
 
 把k8s 从1.17 升级到1.18 
 
@@ -156,7 +157,7 @@ kubectl apply  -f zuoguocai-nginx-ingress.yaml
 
 
 
-
+2. 生成连接集群的 kubeconfig 
 ```
  2 worker 
 
@@ -184,6 +185,8 @@ export PATH=$PATH:$KUBE
 source /etc/profile
 
 ```
+
+
 ## nginx  ingress  controller 
 
 ```
