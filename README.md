@@ -197,7 +197,7 @@ Default region name [None]: c
 Default output format [None]: 
 
 
-配置Kubeconfig，用于kubectl 通过apiserver操作EKS 集群，中国宁夏 对应 cn-northwest-1
+配置Kubeconfig，用于kubectl 通过apiserver操作EKS 集群，中国宁夏 对应 cn-northwest-1，zuoguocai-eks-master 为web控制台创建eks的集群名称
 
 aws eks  --region   cn-northwest-1 update-kubeconfig   --name zuoguocai-eks-master
  
