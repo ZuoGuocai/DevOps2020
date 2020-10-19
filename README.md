@@ -135,6 +135,7 @@ webhook
 
 先升级master，再升级worker
 
+通过观察 kubectl get  nodes 变化，查看进行中的情况
 
 强制升级后，worker的IP地址会变化，原来的worker 不可用，docker配置文件需要重新配置harbor地址
 
