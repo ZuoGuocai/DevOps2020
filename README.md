@@ -161,7 +161,7 @@ curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.18.8/2020-09-18/
 
 参考文档：https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
 
-
+重新部署nginx ingress controller
 kubectl apply  -f zuoguocai-nginx-ingress.yaml
 
 
