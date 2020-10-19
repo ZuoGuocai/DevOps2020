@@ -62,7 +62,7 @@ webhook
 
   基于nginx ingress controller 动静分离
   
-  基于nginx  ingress  controller  header 的灰度
+  基于nginx ingress controller header 的灰度 +  客户端chrome插件Modheader
 
 - 度量    
 
