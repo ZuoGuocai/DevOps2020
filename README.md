@@ -130,6 +130,33 @@ webhook
 ## EKS 
 
 
+把k8s 从1.17 升级到1.18 
+
+先升级master，再升级worker
+
+升级后ingress 不可用 ，ingress-nginx 命名空间无法删除 修复
+```
+kubectl  get ns  ingress-nginx  -o json > ingress.json
+
+把此字段置空
+
+"finalizers": [
+            "finalizers.kubesphere.io/namespaces"  #记得要完全删除字段中的内容
+        ],
+
+kubectl proxy  --address='127.0.0.1'   --port=8001   --accept-hosts='^localhost$,^127\.0\.0\.1$,^\[::1\]$'
+
+curl -k -H "Content-Type: application/json" -X PUT --data-binary @ingress.json http://127.0.0.1:8001/api/v1/naespaces/ingress-nginx/finalize
+
+
+kubectl apply  -f zuoguocai-nginx-ingress.yaml
+```
+
+
+
+
+
+
 ```
  2 worker 
 
