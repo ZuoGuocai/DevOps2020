@@ -13,7 +13,7 @@
 
 - 需求、迭代、任务、缺陷管理，看板、测试计划
 
-我这里使用的阿里云效 ，也可以使用 jira和禅道
+  我这里使用的阿里云效 ，也可以使用 jira和禅道
 
 
 
@@ -21,7 +21,7 @@
 
 
 
-https://github.com/ZuoGuocai/DevOps2020.git
+  https://github.com/ZuoGuocai/DevOps2020.git
 
 <!--
 git tag 管理
@@ -34,32 +34,32 @@ webhook
 
 - 制品库harbor
 
-https://harbor.zuoguocai.xyz:4443/
+  https://harbor.zuoguocai.xyz:4443/
 
 - 单元测试、静态扫描
 
-go test ，
-golangci-lint
+  go test ，
+  golangci-lint
 
 - CICD jenkins pipeline 
-http://52.82.121.46:9000/
+  http://52.82.121.46:9000/
 
 - 部署发布EKS
 
-基于nginx ingress controller 动静分离
-基于nginx  ingress  controller  header 的灰度
+  基于nginx ingress controller 动静分离
+  基于nginx  ingress  controller  header 的灰度
 
 - 度量    
 
-监控 
+1. 监控 
 
-监控宝
+   监控宝
 
-日志
-Kibana、Elasticsearch、Filebeat
+2. 日志
+    Elastic cloud Kibana、Elasticsearch、Filebeat
 
-请求、性能分析
-APM-Golang
+3. 请求、性能分析
+    Elastic cloud APM-Golang
 
 
 
