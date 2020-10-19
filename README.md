@@ -17,7 +17,9 @@
 
 
 
-- 源代码管理github ( https://github.com/ZuoGuocai/DevOps2020.git)
+- 源代码管理github 
+
+  项目仓库 ( https://github.com/ZuoGuocai/DevOps2020.git)
 
   git tag 管理
 
