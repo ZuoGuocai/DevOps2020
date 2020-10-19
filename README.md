@@ -154,6 +154,10 @@ kubectl proxy  --address='127.0.0.1'   --port=8001   --accept-hosts='^localhost$
 curl -k -H "Content-Type: application/json" -X PUT --data-binary @ingress.json http://127.0.0.1:8001/api/v1/naespaces/ingress-nginx/finalize
 
 
+
+升级kubectl
+
+
 kubectl apply  -f zuoguocai-nginx-ingress.yaml
 ```
 
