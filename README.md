@@ -19,22 +19,19 @@
 
 - 源代码管理github
 
+  git tag 管理
 
+  合并分支请求  Github Pull  Requests 
 
   https://github.com/ZuoGuocai/DevOps2020.git
 
 <!--
-git tag 管理
 
-合并分支请求  
-Github Pull  Requests
 Gitlab Merge Request
 webhook
 -->
 
-- 制品库harbor
 
-  https://harbor.zuoguocai.xyz:4443/
 
 - 单元测试、静态扫描
 
@@ -44,6 +41,10 @@ webhook
 - 编译构建
 
   go build, Dockerfile
+  
+- 制品库harbor
+
+  https://harbor.zuoguocai.xyz:4443/
 
 - CICD jenkins pipeline 
 
