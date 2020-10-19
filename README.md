@@ -135,6 +135,10 @@ webhook
 
 先升级master，再升级worker
 
+
+强制升级后，worker的IP地址会变化，原来的worker 不可用，docker配置文件需要重新配置harbor地址
+
+
 升级后ingress 不可用 ，ingress-nginx 命名空间无法删除 修复
 ```
 kubectl  get ns  ingress-nginx  -o json > ingress.json
