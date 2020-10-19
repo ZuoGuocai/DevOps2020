@@ -92,7 +92,7 @@ webhook
    https://devops2020.zuoguocai.xyz:11443/
 
 
-2. ipcat 在pod里获取客户端真实源地址工具(负载均衡反向代理需要开启 支持proxy protocol 协议)
+2. ipcat web 工具， 在pod里获取客户端真实源地址工具(负载均衡反向代理需要开启 支持proxy protocol 协议)
 
    https://devops2020.zuoguocai.xyz:11443/ipcat
 
