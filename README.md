@@ -156,6 +156,9 @@ curl -k -H "Content-Type: application/json" -X PUT --data-binary @ingress.json h
 
 
 升级kubectl
+curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.18.8/2020-09-18/bin/darwin/amd64/kubectl
+
+参考文档：https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
 
 
 kubectl apply  -f zuoguocai-nginx-ingress.yaml
