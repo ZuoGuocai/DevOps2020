@@ -202,7 +202,6 @@ source /etc/profile
 
 ```
 
-<font color=red>我是红色</font>
 ## nginx  ingress  controller 
 
 ```
@@ -213,11 +212,11 @@ k8s.gcr.io/ingress-nginx/controller:v0.35.0 改为 ghcr.io/zuoguocai/ingress-ngi
 更改副本数、网络、默认端口、时区、image仓库地址
 
   spec:
-      hostNetwork: true
-      dnsPolicy: ClusterFirstWithHostNet
+      `hostNetwork: true`
+      `dnsPolicy: ClusterFirstWithHostNet`
       containers:
         - name: controller
-          image: harbor.zuoguocai.xyz:4443/devops/ingress-nginx/controller@sha256:51b3966f02453315e7b4cbd04f20b83be73f76aad02dc6207f8d9ffac6bf5c7b
+          `image: harbor.zuoguocai.xyz:4443/devops/ingress-nginx/controller@sha256:51b3966f02453315e7b4cbd04f20b83be73f76aad02dc6207f8d9ffac6bf5c7b`
           imagePullPolicy: IfNotPresent
           lifecycle:
             preStop:
@@ -232,8 +231,8 @@ k8s.gcr.io/ingress-nginx/controller:v0.35.0 改为 ghcr.io/zuoguocai/ingress-ngi
             - --validating-webhook=:8443
             - --validating-webhook-certificate=/usr/local/certificates/cert
             - --validating-webhook-key=/usr/local/certificates/key
-            - --http-port=11180
-            - --https-port=11443
+            `- --http-port=11180`
+            `- --https-port=11443`
           securityContext:
             capabilities:
               drop:
@@ -253,8 +252,8 @@ k8s.gcr.io/ingress-nginx/controller:v0.35.0 改为 ghcr.io/zuoguocai/ingress-ngi
                   fieldPath: metadata.namespace
             - name: LD_PRELOAD
               value: /usr/local/lib/libmimalloc.so
-            - name: TZ
-              value: Asia/Shanghai
+            `- name: TZ`
+              `value: Asia/Shanghai`
 
 
 
