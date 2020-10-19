@@ -234,7 +234,7 @@ image: harbor.zuoguocai.xyz:4443/devops/ingress-nginx/controller@sha256:51b3966f
 更改后文件为zuoguocai-nginx-ingress.yaml
 
 
-如果无法获取改镜像，可以使用我的镜像仓库里的镜像
+如果无法获取该镜像，可以使用我的镜像仓库里的镜像
 k8s.gcr.io/ingress-nginx/controller:v0.35.0 改为 ghcr.io/zuoguocai/ingress-nginx/controller:v0.35.0
 
 
