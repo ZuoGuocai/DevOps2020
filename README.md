@@ -540,6 +540,11 @@ docker push harbor.zuoguocai.xyz:4443/devops/nginx:v1
 
 https://cloud.elastic.co/home
 
+Cloud/Deployment/集群名 里有CloudID
+
+Manage--Reset password 里给elastic user 设置访问密码
+
+修改filebeat 配置文件 把 cloud.id和cloud.auth（elastic 用户名和密码） 填入
 
 filebeat install
 
@@ -562,6 +567,38 @@ sudo filebeat modules enable elasticsearch
 sudo filebeat setup
 sudo systemctl start  filebeat 
 
+
+```
+
+参考文档： https://www.elastic.co/guide/en/beats/filebeat/current/configure-cloud-id.html
+
+APM
+
+点击 Quick Link Kibana--- Observability（Add APM)---Go--Configure the agent 里可以找到ELASTIC_APM_SERVER_URL，ELASTIC_APM_SECRET_TOKEN
+
+```
+
+作为环境变量引入Dockerfile
+
+ENV ELASTIC_APM_SERVICE_NAME=ipcat
+# Set custom APM Server URL (default: http://localhost:8200)
+ENV ELASTIC_APM_SERVER_URL=https://8b06fec588334601ba91e8ad7fe235c3.apm.eastus2.azure.elastic-cloud.com:443
+# Use if APM Server requires a token
+ENV ELASTIC_APM_SECRET_TOKEN=JOFwFHBYdXzAbIMUYP
+
+ipcat.go import apm agent 的包
+
+import (
+	"net/http"
+
+	"go.elastic.co/apm/module/apmhttp"
+)
+
+func main() {
+	mux := http.NewServeMux()
+	...
+	http.ListenAndServe(":5000", apmhttp.Wrap(mux))
+}
 
 ```
 
