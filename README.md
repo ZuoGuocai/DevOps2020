@@ -209,7 +209,7 @@ source /etc/profile
 
 参考 https://github.com/kubernetes/ingress-nginx/blob/master/deploy/static/provider/baremetal/deploy.yaml
 
-更改副本数、网络、默认端口、时区、image仓库地址
+更改副本数或者使用DamonSet的方式、网络、默认端口、时区、image仓库地址
 
 spec:
   replicas: 2
