@@ -385,6 +385,11 @@ java -jar  jenkins.war   --httpPort=9000  --daemon
 
 http://52.82.121.46:9000/
 
+插件：
+Build with Parameters，Blue Ocean，Dingtalk
+jienkins 中的 Kubernetes 插件：Jenkins 在 Kubernetes 集群中运行动态代理 插件介绍：https://github.com/jenkinsci/kubernetes-plugin
+
+http://myci.zuoguocai.xyz:11180/restart 
 
 ```
 
