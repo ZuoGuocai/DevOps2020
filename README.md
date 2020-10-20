@@ -54,7 +54,7 @@ webhook
 
 - CICD jenkins pipeline 
 
-  脚本式Jenkinsfile 、Blue Ocean 、人工确认
+  脚本式Jenkinsfile 、参数化构建、动态构建、Blue Ocean 、人工确认、钉钉通知
   
   http://52.82.121.46:9000/
 
