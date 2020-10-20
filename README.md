@@ -359,9 +359,12 @@ https://github.com/ZuoGuocai/DevOps2020.git
 
 
 ```
+http://myci.zuoguocai.xyz:11180/
 
+kubectl  exec -it    jenkins-0  cat /var/jenkins_home/secrets/initialAdminPassword  -n default
 
 ```
+
 
 参考文档： https://github.com/jenkinsci/kubernetes-plugin/blob/fc40c869edfd9e3904a9a56b0f80c5a25e988fa1/src/main/kubernetes/jenkins.yml
 
