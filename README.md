@@ -359,6 +359,9 @@ https://github.com/ZuoGuocai/DevOps2020.git
 
 
 ```
+安装yaml 文件 见 install_jenkins_in_k8s 文件夹
+
+
 http://myci.zuoguocai.xyz:11180/
 
 kubectl  exec -it    jenkins-0  cat /var/jenkins_home/secrets/initialAdminPassword  -n default
