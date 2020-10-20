@@ -307,6 +307,10 @@ kubectl -n devops rollout history deployment/kustomize-getrealip  --revision=1
 kubectl -n devops rollout undo deployment/kustomize-getrealip --to-revision=1
 
 ```
+
+
+
+
 ## 扩容
 
 ```
@@ -351,8 +355,17 @@ https://whypro.github.io/hexo-blog/20180301/Kubernetes-%E6%9C%8D%E5%8A%A1%E7%81%
 https://github.com/ZuoGuocai/DevOps2020.git
 
 ```
+## jenkins 容器化+动态构建
 
-## jenkins 搭建
+
+```
+
+
+```
+
+参考文档： https://github.com/jenkinsci/kubernetes-plugin/blob/fc40c869edfd9e3904a9a56b0f80c5a25e988fa1/src/main/kubernetes/jenkins.yml
+
+## jenkins 单机搭建
 
 
 ```
