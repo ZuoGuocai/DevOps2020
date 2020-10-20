@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+ 
+ <localRepository>/data/Repository</localRepository>
+  <interactiveMode>true</interactiveMode>
+  <offline>false</offline>
+  <pluginGroups>
+  </pluginGroups>
+ 
+  <proxies>
+    <!-- proxy
+     | Specification for one proxy, to be used in connecting to the network.
+     |
+    <proxy>
+      <id>optional</id>
+      <active>true</active>
+      <protocol>http</protocol>
+      <username>proxyuser</username>
+      <password>proxypass</password>
+      <host>proxy.host.net</host>
+      <port>80</port>
+      <nonProxyHosts>local.net|some.host.com</nonProxyHosts>
+    </proxy>
+    -->
+  </proxies>
+ 
+  <servers>
+    <server>
+      <id>releases</id>
+      <username>admin</username>
+      <password>aliyun</password>
+    </server>
+    <server>
+      <id>aliyun</id>
+      <username>admin</username>
+      <password>aliyun</password>
+    </server>
+     
+    <server>
+      <id>snapshots</id>
+      <username>admin</username>
+      <password>aliyun</password>
+    </server>
+  </servers>
+ 
+  <mirrors>
+    <!-- mirror
+     | Specifies a repository mirror site to use instead of a given repository. The repository that
+     | this mirror serves has an ID that matches the mirrorOf element of this mirror. IDs are used
+     | for inheritance and direct lookup purposes, and must be unique across the set of mirrors.
+     |
+    <mirror>
+      <id>mirrorId</id>
+      <mirrorOf>repositoryId</mirrorOf>
+      <name>Human Readable Name for this Mirror.</name>
+      <url>http://my.repository.com/repo/path</url>
+    </mirror>
+     -->
+  </mirrors>
+ 
+ <profiles>
+        <profile>
+            <id>nexus</id>
+            <repositories>
+                <repository>
+                    <id>nexus_public</id>
+                    <name>aliyun Team Repository</name>
+                    <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                        <checksumPolicy>fail</checksumPolicy>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>snapshots</id>
+                    <url>http://maven.aliyun.com/nexus/content/repositories/snapshots</url>
+                </repository>
+                <repository>
+                    <id>aliyun</id>
+                    <url>http://maven.aliyun.com/nexus/content/repositories/aliyun</url>
+                </repository>
+                <repository>
+                    <id>jenkins</id>
+                    <url>http://repo.jenkins-ci.org/releases/</url>
+                </repository>
+            </repositories>
+ 
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>nexus_public</id>
+                    <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>central</id>
+                    <name>Central Repository</name>
+                    <url>https://repo.maven.apache.org/maven2</url>
+                    <releases>
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>protoc-plugin</id>
+                    <url>https://dl.bintray.com/sergei-ivanov/maven/</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>nexus</activeProfile>
+    </activeProfiles>
+</settings>
