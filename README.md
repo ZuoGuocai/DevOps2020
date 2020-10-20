@@ -359,12 +359,22 @@ https://github.com/ZuoGuocai/DevOps2020.git
 
 
 ```
+- master
+
 安装yaml 文件 见 install_jenkins_in_k8s 文件夹
 
-
 http://myci.zuoguocai.xyz:11180/
-
 kubectl  exec -it    jenkins-0  cat /var/jenkins_home/secrets/initialAdminPassword  -n default
+
+插件：
+Build with Parameters，Blue Ocean，Dingtalk，Kubernetes plugin
+jienkins 中的 Kubernetes 插件：Jenkins 在 Kubernetes 集群中运行动态代理 插件介绍：https://github.com/jenkinsci/kubernetes-plugin
+http://myci.zuoguocai.xyz:11180/restart 
+
+- slave
+wget  http://myci.zuoguocai.xyz:11180//jnlpJars/slave.jar
+docker build -t harbor.zuoguocai.xyz:4443/devops/jenkins-slave-jdk:1.8  .
+docker push harbor.zuoguocai.xyz:4443/devops/jenkins-slave-jdk:1.8
 
 ```
 
@@ -385,11 +395,7 @@ java -jar  jenkins.war   --httpPort=9000  --daemon
 
 http://52.82.121.46:9000/
 
-插件：
-Build with Parameters，Blue Ocean，Dingtalk
-jienkins 中的 Kubernetes 插件：Jenkins 在 Kubernetes 集群中运行动态代理 插件介绍：https://github.com/jenkinsci/kubernetes-plugin
 
-http://myci.zuoguocai.xyz:11180/restart 
 
 ```
 
