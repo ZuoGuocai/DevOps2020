@@ -371,6 +371,11 @@ Build with Parameters，Blue Ocean，Dingtalk，Kubernetes plugin
 jienkins 中的 Kubernetes 插件：Jenkins 在 Kubernetes 集群中运行动态代理 插件介绍：https://github.com/jenkinsci/kubernetes-plugin
 http://myci.zuoguocai.xyz:11180/restart 
 
+配置Kubernetes plugin 插件
+系统管理--系统配置--Cloud--Add a new cloud--kubernetes
+Kubernetes 地址 https://kubernetes.default  测试连接
+
+
 - slave
 wget  http://myci.zuoguocai.xyz:11180//jnlpJars/slave.jar
 docker build -t harbor.zuoguocai.xyz:4443/devops/jenkins-slave-jdk:1.8  .
