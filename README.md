@@ -454,6 +454,8 @@ https://plugins.jenkins.io/kubernetes/
 
 https://kubernetes.io/zh/docs/reference/access-authn-authz/rbac/#%E5%AE%BD%E6%9D%BE%E7%9A%84-rbac-%E6%9D%83%E9%99%90
 
+https://github.com/jenkinsci/docker-inbound-agent
+
 ## jenkins 单机搭建
 
 
