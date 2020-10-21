@@ -447,8 +447,33 @@ d866f0b482db94f38e49b26b465d5db5  slave.jar
 slave.jar 和agent.jar 应该是同样的一个包，使用其中一个就行
 
 
+见 install_jenkins_in_k8s/jenkins-slave 文件夹
+
 docker build -t harbor.zuoguocai.xyz:4443/devops/jenkins-slave-jdk:1.8  .
 docker push harbor.zuoguocai.xyz:4443/devops/jenkins-slave-jdk:1.8
+
+
+测试
+
+podTemplate(label: 'jenkins-slave', cloud: 'kubernetes', containers: [
+    containerTemplate(
+        name: 'jnlp', 
+        image: "harbor.zuoguocai.xyz:4443/devops/jenkins-slave-jdk:1.8"
+    ),
+  ],
+  volumes: [
+    hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
+    hostPathVolume(mountPath: '/usr/bin/docker', hostPath: '/usr/bin/docker')
+  ],
+) 
+{
+  node("jenkins-slave"){
+      // 第一步
+      stage('拉取代码'){
+        echo "123"
+    }
+  }
+}
 
 ```
 
