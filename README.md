@@ -436,6 +436,17 @@ podTemplate(label: 'jenkins-slave', cloud: 'kubernetes', containers: [
 
 ```
 wget  http://myci.zuoguocai.xyz:11180//jnlpJars/slave.jar
+wget  http://myci.zuoguocai.xyz:11180//jnlpJars/agent.jar
+
+
+[root@ip-172-31-39-226 jenkins-slave]# md5sum agent.jar
+d866f0b482db94f38e49b26b465d5db5  agent.jar
+[root@ip-172-31-39-226 jenkins-slave]# md5sum slave.jar 
+d866f0b482db94f38e49b26b465d5db5  slave.jar
+
+slave.jar 和agent.jar 应该是同样的一个包，使用其中一个就行
+
+
 docker build -t harbor.zuoguocai.xyz:4443/devops/jenkins-slave-jdk:1.8  .
 docker push harbor.zuoguocai.xyz:4443/devops/jenkins-slave-jdk:1.8
 
