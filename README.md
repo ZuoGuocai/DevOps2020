@@ -56,7 +56,9 @@ webhook
 
   脚本式Jenkinsfile 、参数化构建、动态构建、Blue Ocean 、人工确认、钉钉通知
   
-  http://52.82.121.46:9000/
+  http://52.82.121.46:9000/ （ec2单机版）
+  
+  http://myci.zuoguocai.xyz:11180/ （k8s版）
 
 - 部署发布EKS
 
