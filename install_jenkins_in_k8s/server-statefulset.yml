@@ -1,0 +1,105 @@
+# jenkins
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: jenkins-server
+  labels:
+    name: jenkins-server
+  namespace: kube-jenkins
+spec:
+  serviceName: jenkins-server
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      name: jenkins-server
+  template:
+    metadata:
+      name: jenkins-server
+      labels:
+        name: jenkins-server
+    spec:
+      terminationGracePeriodSeconds: 10
+      serviceAccountName: jenkins-server
+      containers:
+        - name: jenkins-server
+          image: jenkins/jenkins:lts-alpine
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+            - containerPort: 50000
+          resources:
+            limits:
+              cpu: 1
+              memory: 1Gi
+            requests:
+              cpu: 0.5
+              memory: 500Mi
+          env:
+            - name: LIMITS_MEMORY
+              valueFrom:
+                resourceFieldRef:
+                  resource: limits.memory
+                  divisor: 1Mi
+            - name: JAVA_OPTS
+              # value: -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=1 -XshowSettings:vm -Dhudson.slaves.NodeProvisioner.initialDelay=0 -Dhudson.slaves.NodeProvisioner.MARGIN=50 -Dhudson.slaves.NodeProvisioner.MARGIN0=0.85
+              value: -Xmx$(LIMITS_MEMORY)m -XshowSettings:vm -Dhudson.slaves.NodeProvisioner.initialDelay=0 -Dhudson.slaves.NodeProvisioner.MARGIN=50 -Dhudson.slaves.NodeProvisioner.MARGIN0=0.85
+          volumeMounts:
+            - name: jenkins-home
+              mountPath: /var/jenkins_home
+          livenessProbe:
+            httpGet:
+              path: /login
+              port: 8080
+            initialDelaySeconds: 60
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /login
+              port: 8080
+            initialDelaySeconds: 60
+            timeoutSeconds: 5
+      securityContext:
+        fsGroup: 1000
+  volumeClaimTemplates:
+  - metadata:
+      name: jenkins-home
+      # annotations:
+      #   volume.beta.kubernetes.io/storage-class: anything
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 5Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins-server
+  namespace: kube-jenkins
+  labels:
+    app: jenkins-server
+  annotations:
+    # ensure the client ip is propagated to avoid the invalid crumb issue (k8s <1.7)
+    # service.beta.kubernetes.io/external-traffic: OnlyLocal
+spec:
+  type: NodePort
+  selector:
+    name: jenkins-server
+  # k8s 1.7+
+  #externalTrafficPolicy: Local
+  ports:
+    -
+      name: http
+      port: 80
+      targetPort: 8080
+      protocol: TCP
+      nodePort: 30006
+    -
+      name: agent
+      port: 50000
+      protocol: TCP

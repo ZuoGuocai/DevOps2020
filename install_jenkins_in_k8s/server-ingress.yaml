@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: jenkins-server
+  namespace: kube-jenkins
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    kubernetes.io/tls-acme: "true"
+    # 如果上传插件超出默认会报"413 Request Entity Too Large", 增加 client_max_body_size
+    nginx.ingress.kubernetes.io/proxy-body-size: 50m
+    nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
+    # nginx-ingress controller版本小于 0.9.0.beta-18 的配置
+    ingress.kubernetes.io/ssl-redirect: "true"
+    ingress.kubernetes.io/proxy-body-size: 50m
+    ingress.kubernetes.io/proxy-request-buffering: "off"
+spec:
+  rules:
+  - host: myci.zuoguocai.xyz
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: jenkins-server
+          servicePort: 80
