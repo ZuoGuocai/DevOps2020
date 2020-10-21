@@ -385,8 +385,11 @@ docker push harbor.zuoguocai.xyz:4443/devops/jenkins-slave-jdk:1.8
 
 
 参考文档： 
+
 https://github.com/jenkinsci/kubernetes-plugin/blob/fc40c869edfd9e3904a9a56b0f80c5a25e988fa1/src/main/kubernetes/jenkins.yml
+
 https://github.com/jenkinsci/docker-inbound-agent/blob/master/jenkins-agent
+
 https://aws.amazon.com/cn/blogs/china/base-on-jenkins-create-kubernetes-on-aws-ci-cd-tube/
 
 ## jenkins 单机搭建
