@@ -373,10 +373,68 @@ http://myci.zuoguocai.xyz:11180/restart
 
 配置Kubernetes plugin 插件
 系统管理--系统配置--Cloud--Add a new cloud--kubernetes
-Kubernetes 地址 https://kubernetes.default  测试连接
+
+名称              kubernetes
+Kubernetes 地址	https://kubernetes.default.svc.cluster.local 或https://kubernetes.default 
+Jenkins 地址	http://172.31.14.217:30006
+Jenkins 通道	172.31.14.217:31400
+
+ 测试连接
+
+
+宽松的 RBAC 权限 
+可以使用 RBAC 角色绑定在多个场合使用宽松的策略。
+警告：
+下面的策略允许 所有 服务帐户充当集群管理员。 容器中运行的所有应用程序都会自动收到服务帐户的凭据， 可以对 API 执行任何操作，包括查看 Secrets 和修改权限。 这个策略是不被推荐的。
+
+kubectl create clusterrolebinding permissive-binding \
+  --clusterrole=cluster-admin \
+  --user=admin \
+  --user=kubelet \
+  --group=system:serviceaccounts
+
+
+
+
 
 
 - slave
+
+使用官方slave镜像 jenkinsci/jnlp-slave
+
+
+测试pipeline
+
+podTemplate(label: 'jenkins-slave', cloud: 'kubernetes', containers: [
+    containerTemplate(
+        name: 'jnlp', 
+        image: "jenkinsci/jnlp-slave"
+    ),
+  ],
+  volumes: [
+    hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
+    hostPathVolume(mountPath: '/usr/bin/docker', hostPath: '/usr/bin/docker')
+  ],
+) 
+{
+  node("jenkins-slave"){
+      // 第一步
+      stage('拉取代码'){
+        echo "123"
+    }
+  }
+}
+
+
+
+
+
+
+```
+
+自定义slave镜像
+
+```
 wget  http://myci.zuoguocai.xyz:11180//jnlpJars/slave.jar
 docker build -t harbor.zuoguocai.xyz:4443/devops/jenkins-slave-jdk:1.8  .
 docker push harbor.zuoguocai.xyz:4443/devops/jenkins-slave-jdk:1.8
@@ -391,6 +449,10 @@ https://github.com/jenkinsci/kubernetes-plugin/blob/fc40c869edfd9e3904a9a56b0f80
 https://github.com/jenkinsci/docker-inbound-agent/blob/master/jenkins-agent
 
 https://aws.amazon.com/cn/blogs/china/base-on-jenkins-create-kubernetes-on-aws-ci-cd-tube/
+
+https://plugins.jenkins.io/kubernetes/
+
+https://kubernetes.io/zh/docs/reference/access-authn-authz/rbac/#%E5%AE%BD%E6%9D%BE%E7%9A%84-rbac-%E6%9D%83%E9%99%90
 
 ## jenkins 单机搭建
 
