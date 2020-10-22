@@ -1,0 +1,29 @@
+#定义日志收集相关配置的一个configmap
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: devops
+  name: ipcat-filebeat-config
+  labels:
+    app: filebeat
+data:
+  filebeat.yml: |-   
+    filebeat.inputs:
+    - type: log
+      enabled: true
+      paths:
+        - /logdata/*.log
+      fields:
+        pod_name: '${pod_name}'
+        POD_IP: '${POD_IP}'
+    cloud.id: "i-o-optimized-deployment:ZWFzdHVzMi5henVyZS5lbGFzdGljLWNsb3VkLmNvbSRhMWU2ZTNmN2I3ZmE0NGU4YTc4MDFjNjZmOGIzNGUxNSQ2MmM4OGI1YTQ5ZTM0NTFlYWFjYjMxMDY1OGI0ODNkMQ=="
+    cloud.auth: "elastic:Pcw4JOFDqZ5OW0dv42pvUAj2"
+    setup.template.name: "ipcat-logs"
+    setup.template.pattern: "ipcat-logs-*"
+    processors:
+      - add_host_metadata:
+          when.not.contains.tags: forwarded
+      - add_cloud_metadata: ~
+      - add_docker_metadata: ~
+      - add_kubernetes_metadata: ~

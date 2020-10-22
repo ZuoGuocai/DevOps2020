@@ -1,0 +1,81 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ipcat-zuoguocai
+  name: ipcat-zuoguocai
+  namespace: devops
+spec:
+  replicas: 1
+  minReadySeconds: 15     #滚动升级15s后标志pod准备就绪
+  strategy:
+    rollingUpdate:        #replicas为2, 升级过程中pod个数在1-3个之间
+      maxSurge: 1         #滚动升级时会先启动1个pod
+      maxUnavailable: 1   #滚动升级时允许pod处于Unavailable的最大个数
+  selector:
+    matchLabels:
+      app: ipcat-zuoguocai
+  template:
+    metadata:
+      labels:
+        app: ipcat-zuoguocai
+    spec:
+      terminationGracePeriodSeconds: 30 #30秒内优雅关闭程序
+
+      containers:
+
+      - name: filebeat
+        image: docker.elastic.co/beats/filebeat:7.9.2     #提前下载下来到私有镜像库的镜像(官方的可能会被墙)
+        args: [
+          "-c", "/opt/filebeat/filebeat.yml",
+          "-e",
+        ]
+        env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.podIP
+        - name: pod_name
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        securityContext:
+          runAsUser: 0
+        resources:
+          limits:
+            memory: 200Mi
+          requests:
+            cpu: 200m
+            memory: 200Mi
+        volumeMounts:
+        - name: config               #将configmap的内容放到容器本地目录
+          mountPath: /opt/filebeat/
+        - name: data
+          mountPath: /usr/share/filebeat/data
+        - name: logdata       #同一个pod内的两个应用共享目录logdata, 一个写一个读
+          mountPath: /logdata
+ 
+      - name: ipcat-zuoguocai
+        image: harbor.zuoguocai.xyz:4443/devops/ipcat:zuoguocai  #提供具体服务的app镜像
+        ports:
+          - name: http
+            containerPort: 5000
+            protocol: TCP
+        volumeMounts:
+        - name: logdata       #指定挂在目录到logdata
+          mountPath: /var/log/ipcat
+
+      volumes:
+      - name: data
+        emptyDir: {}
+      - name: logdata         #定义logdata为EmptyDir类型挂载目录
+        emptyDir: {}
+      - name: config
+        configMap:
+          name: ipcat-filebeat-config  #使用前面定义的configmap
+          items:
+          - key: filebeat.yml
+            path: filebeat.yml
