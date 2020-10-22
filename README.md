@@ -687,7 +687,10 @@ Cloud/Deployment/集群名 里有CloudID
 
 Manage--Reset password 里给elastic user 设置访问密码
 
-修改filebeat 配置文件 把 cloud.id和cloud.auth（elastic 用户名和密码） 填入
+
+1. 日志
+
+   修改filebeat 配置文件 把 cloud.id和cloud.auth（elastic 用户名和密码） 填入
 
 
 - pod级别的采集(filebeat + sidecar)
@@ -701,11 +704,11 @@ Manage--Reset password 里给elastic user 设置访问密码
 
 
 ```
-参考文档：
+  参考文档：
 
-https://www.docker.elastic.co/r/beats/filebeat:7.9.2
+   https://www.docker.elastic.co/r/beats/filebeat:7.9.2
 
-https://github.com/elastic/beats/blob/master/deploy/kubernetes/filebeat-kubernetes.yaml
+   https://github.com/elastic/beats/blob/master/deploy/kubernetes/filebeat-kubernetes.yaml
 
 
 - 节点级别的采集
@@ -735,9 +738,9 @@ sudo systemctl start  filebeat
 
 ```
 
-参考文档： https://www.elastic.co/guide/en/beats/filebeat/current/configure-cloud-id.html
+  参考文档： https://www.elastic.co/guide/en/beats/filebeat/current/configure-cloud-id.html
 
-APM
+2. APM
 
 点击 Quick Link Kibana--- Observability（Add APM)---Go--Configure the agent 里可以找到ELASTIC_APM_SERVER_URL，ELASTIC_APM_SECRET_TOKEN
 
