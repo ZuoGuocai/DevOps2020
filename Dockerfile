@@ -8,6 +8,7 @@ ENV ELASTIC_APM_SERVER_URL=https://8b06fec588334601ba91e8ad7fe235c3.apm.eastus2.
 ENV ELASTIC_APM_SECRET_TOKEN=JOFwFHBYdXzAbIMUYP
 
 WORKDIR /myapp
+RUN mkdir /var/log/ipcat
 ADD ./ipcat /myapp/ipcat
 EXPOSE 5000
 ENTRYPOINT  ["./ipcat"]
