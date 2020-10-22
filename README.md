@@ -689,15 +689,37 @@ Manage--Reset password 里给elastic user 设置访问密码
 
 修改filebeat 配置文件 把 cloud.id和cloud.auth（elastic 用户名和密码） 填入
 
-filebeat install
+
+- pod级别的采集(filebeat + sidecar)
+
+
+
+```
+通过 共享日志目录采集
+
+见 filebeat-sidecar 文件夹
+
+
+```
+参考文档：
+
+https://www.docker.elastic.co/r/beats/filebeat:7.9.2
+
+https://github.com/elastic/beats/blob/master/deploy/kubernetes/filebeat-kubernetes.yaml
+
+
+- 节点级别的采集
+
+ filebeat install
 
 ```
 curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.9.2-x86_64.rpm
 
 
 yum  -y install filebeat-7.9.2-x86_64.rpm 
-vim /etc/filebeat/filebeat.yml
 
+vim /etc/filebeat/filebeat.yml
+# 6.3以前是 filebeat.prospectors  以后是 filebeat.inputs  
 filebeat.inputs:
 - type: log
   enabled: true
