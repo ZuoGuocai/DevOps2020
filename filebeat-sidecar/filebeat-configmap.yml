@@ -19,6 +19,9 @@ data:
         POD_IP: '${POD_IP}'
     cloud.id: "i-o-optimized-deployment:ZWFzdHVzMi5henVyZS5lbGFzdGljLWNsb3VkLmNvbSRhMWU2ZTNmN2I3ZmE0NGU4YTc4MDFjNjZmOGIzNGUxNSQ2MmM4OGI1YTQ5ZTM0NTFlYWFjYjMxMDY1OGI0ODNkMQ=="
     cloud.auth: "elastic:Pcw4JOFDqZ5OW0dv42pvUAj2"
+    output.elasticsearch.index: "ipcat-%{[agent.version]}-%{+yyyy.MM.dd}"
+    #setup.ilm.rollover_alias: "zuoguocai"
+    #setup.ilm.pattern: "{now/d}-000001
     setup.ilm.enabled: false
     setup.template.name: "ipcat-logs"
     setup.template.pattern: "ipcat-logs-*"
