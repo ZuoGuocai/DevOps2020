@@ -6,6 +6,7 @@ package main
 
 import (
     "io"
+    "os"
     log "github.com/sirupsen/logrus"
     "net/http"
     "net/http/httputil"
@@ -22,6 +23,20 @@ func main() {
     mux.Handle("/live2d/", http.StripPrefix("/live2d/", fs))
     mux.HandleFunc("/", GetRealIP)
     log.Info("Server starting ...")
+    
+    
+    var logFile string = "/var/log/ipcat/ipcat.log"
+    var file, err = os.OpenFile(logFile, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+    if err != nil {
+        log.Errorf("Could Not Open Log File : " + err.Error())
+    }
+
+    log.SetOutput(file)
+    //log.SetFormatter(&log.TextFormatter{})
+    log.SetFormatter(&log.JSONFormatter{})
+
+    
+    
     if err :=  http.ListenAndServe(":5000", apmhttp.Wrap(mux));err != nil {
           log.Errorf("Httpserver: ListenAndServe() error: %s", err)
     }
