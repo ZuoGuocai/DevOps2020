@@ -12,6 +12,8 @@ data:
     filebeat.inputs:
     - type: log
       enabled: true
+      json.keys_under_root: true    #json格式收集
+      json.overwrite_keys: true       #json格式收集
       paths:
         - /logdata/*.log
       fields:
