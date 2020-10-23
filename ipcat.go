@@ -9,7 +9,7 @@ import (
     "os"
     log "github.com/sirupsen/logrus"
     "net/http"
-    "net/http/httputil"
+   // "net/http/httputil"
     "strings"
     "go.elastic.co/apm/module/apmhttp"
 )
@@ -43,7 +43,7 @@ func main() {
 }
 
 func GetRealIP(w http.ResponseWriter, r *http.Request) {
-    dump, _ := httputil.DumpRequest(r, false)
+    //dump, _ := httputil.DumpRequest(r, false)
     //log.Printf("%q\n", dump)
     log.WithFields(log.Fields{
 	"ip": r.Header.Get("X-Real-Ip"),
