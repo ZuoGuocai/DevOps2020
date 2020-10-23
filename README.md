@@ -682,7 +682,8 @@ harbor_url="harbor.zuoguocai.xyz:4443"
 #$curl -i  -k -X GET --header 'Accept: application/json'  -u ${harbor_user}:${harbor_passwd}  "https://${harbor_url}/api/v2.0/projects"
 #curl -s -k -X GET --header 'Accept: application/json'  -u ${harbor_user}:${harbor_passwd}  "https://${harbor_url}/api/v2.0/search?q=devops" |jq  .repository[].repository_name  -r
 
-curl -s -k -X GET --header 'Accept: application/json'  -u ${harbor_user}:${harbor_passwd}  "https://${harbor_url}/api/v2.0/projects/devops/repositories/ipcat/artifacts" |jq .[].tags
+curl -s -k -X GET --header 'Accept: application/json'  -u ${harbor_user}:${harbor_passwd}  "https://${harbor_url}/api/v2.0/projects/devops/repositories/ipcat/artifacts" |jq .[].tags|jq '.[] |[.name,.push_time]'
+curl -s -k -X GET --header 'Accept: application/json'  -u ${harbor_user}:${harbor_passwd}  "https://${harbor_url}/api/v2.0/projects/devops/repositories/ipcat/artifacts" |jq '.[] | [.digest,.push_time]'
 
 
 
