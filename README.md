@@ -685,7 +685,13 @@ https://cloud.elastic.co/home
 
 Cloud/Deployment/集群名 里有CloudID
 
+web控制台管理
+
 Manage--Reset password 里给elastic user 设置访问密码
+Management--Stack Management--Data--Index Management
+Management--Stack Management--Kibana--Index Patterns
+Management--Stack Management--Index Management--Templates--Create template
+
 
 
 1. 日志
