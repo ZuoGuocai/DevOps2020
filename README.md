@@ -5,10 +5,16 @@
 
 依托于 AWS EC2 基于 Dockerfile + Jenkinsfile + EKS   搭建golang web 应用 交付流水线
 
-![image](https://github.com/ZuoGuocai/DevOps2020/blob/master/images/map1.png)
-![image](https://github.com/ZuoGuocai/DevOps2020/blob/master/images/map2.png)
+
 ![image](http://processon.com/chart_image/5f3e59245653bb06f2dd122c.png)
 
+
+# 参考理念：
+
+http://choerodon.io/zh/docs/concept/choerodon-concept/
+
+![image](https://github.com/ZuoGuocai/DevOps2020/blob/master/images/map1.png)
+![image](https://github.com/ZuoGuocai/DevOps2020/blob/master/images/map2.png)
 
 # 整体说明：
 
