@@ -103,6 +103,8 @@ webhook
 
 # 功能点：
 
+> Notice: 资源已释放，以下域名不可访问
+
 1. AI学习导航
 
    https://devops2020.zuoguocai.xyz:11443/
@@ -139,8 +141,9 @@ webhook
 
 # 运维记录:
 
+他山之石： 
 
-
+1. 强烈推荐：8个Kubernetes运维的技巧  https://mp.weixin.qq.com/s/tinIr9a2IXBMnBs5yECaNQ
 
 
 ## EKS 
