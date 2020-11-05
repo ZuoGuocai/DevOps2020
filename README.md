@@ -12,8 +12,10 @@
 # 参考理念：
 
 猪齿鱼 http://choerodon.io/zh/docs/concept/choerodon-concept/
+
 元素周期表 https://devops.phodal.com/home
 
+中国DevOps社区 https://devopschina.org/
 
 
 ![image](https://github.com/ZuoGuocai/DevOps2020/blob/master/images/map1.png)
