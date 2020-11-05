@@ -32,6 +32,8 @@ http://choerodon.io/zh/docs/concept/choerodon-concept/
 
   合并分支请求  Github Pull  Requests 
   
+  您必须知道的 Git 分支开发规范（https://juejin.im/post/6844903635533594632）
+  
   Code Review (https://github.com/features/code-review/)
 
 
