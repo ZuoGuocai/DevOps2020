@@ -11,7 +11,10 @@
 
 # 参考理念：
 
-http://choerodon.io/zh/docs/concept/choerodon-concept/
+猪齿鱼 http://choerodon.io/zh/docs/concept/choerodon-concept/
+元素周期表 https://devops.phodal.com/home
+
+
 
 ![image](https://github.com/ZuoGuocai/DevOps2020/blob/master/images/map1.png)
 ![image](https://github.com/ZuoGuocai/DevOps2020/blob/master/images/map2.png)
